@@ -1,0 +1,53 @@
+{
+    "termsOfUse": {
+      "title": "Conditions d'utilisation de la plateforme de présentation des agences de location de voitures",
+      "lastUpdated": "Dernière mise à jour",
+      "welcome": "Bienvenue sur {{platformName}}. En utilisant ce site web ou cette application, vous acceptez les présentes conditions d'utilisation. Veuillez les lire attentivement avant d'utiliser les services de la plateforme.",
+
+      "platformDefinition": {
+        "title": "Définition de la plateforme",
+        "description1": "{{platformName}} est une plateforme en ligne destinée à mettre en relation les utilisateurs souhaitant louer un véhicule avec les agences de location de voitures référencées sur la plateforme.",
+        "description2": "La plateforme n'est pas une agence de location de voitures et ne possède, ne gère ni ne loue aucun véhicule présenté sur le site."
+      },
+
+      "acceptance": {
+        "title": "Acceptation des conditions",
+        "intro": "En utilisant la plateforme, l'utilisateur reconnaît qu'il :",
+        "items": [
+          "A lu les présentes conditions d'utilisation.",
+          "En comprend le contenu.",
+          "Accepte de les respecter intégralement."
+        ],
+        "outro": "Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser la plateforme."
+      },
+
+      "serviceNature": {
+        "title": "Nature du service",
+        "intro": "La plateforme fournit les services suivants :",
+        "items": [
+          "Présentation des agences et des véhicules disponibles.",
+          "Recherche et comparaison des offres.",
+          "Facilitation de la communication ou des demandes de réservation entre l'utilisateur et l'agence."
+        ],
+        "outro": "La plateforme ne garantit pas la conclusion effective d'une location."
+      },
+
+      "governingLaw": {
+        "title": "Droit applicable",
+        "description": "Les présentes conditions sont régies par les lois en vigueur de la République Algérienne Démocratique et Populaire."
+      },
+
+      "contact": {
+        "title": "Informations de contact",
+        "platformName": "Nom de la plateforme",
+        "email": "E-mail",
+        "phone": "Téléphone",
+        "address": "Adresse"
+      },
+
+      "disclaimer": {
+        "title": "Avis de non-responsabilité important",
+        "text": "{{platformName}} est uniquement une plateforme électronique d'intermédiation et de mise en relation. Elle n'est ni propriétaire ni loueur des véhicules présentés et n'assume aucune responsabilité contractuelle, juridique ou financière résultant de la relation entre l'utilisateur et l'agence de location."
+      }
+    }
+  }

@@ -1,0 +1,864 @@
+/*
+Theme Name: MTAFT
+Theme URI: www.ayrade.com
+Author: AYRADE
+Author URI: www.ayrade.com
+*/
+
+/*******Arabic font-family*****/
+/* 
+ * Droid Arabic Naskh (Early Access) http://www.google.com/webfonts/earlyaccess
+ */
+@font-face {
+  font-family: 'Droid Arabic Naskh';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/droidarabicnaskh/v2/DroidNaskh-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/droidarabicnaskh/v2/DroidNaskh-Regular.woff) format('woff'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/droidarabicnaskh/v2/DroidNaskh-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Arabic Naskh';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/droidarabicnaskh/v2/DroidNaskh-Bold.eot?#iefix) format('embedded-opentype'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/droidarabicnaskh/v2/DroidNaskh-Bold.woff) format('woff'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/droidarabicnaskh/v2/DroidNaskh-Bold.ttf) format('truetype');
+}
+
+
+
+
+
+
+/*****Meriem code****/
+
+.vcv-header {
+    z-index: 10;
+}
+ul.menu {
+    padding-left: 0;
+}
+ul.menu>li>a {
+    padding: 16px 18px !important;
+    font-family: Montserrat;
+    font-weight: 600;
+}
+/*** actualite accueil v2 ***/
+.slide-accueil .slick-slide {
+    height: 551px !important;
+}
+.slide-accueil .vce-posts-slider-item-title {
+    text-transform: uppercase;
+}
+.actu2 .vce-posts-grid-item {
+    margin-bottom: 7px !important;
+}
+.actu2 .vce-post-description--title {
+    font-family: Montserrat;
+    font-size: 18px !important;
+    letter-spacing: 2px !important;
+    background-color: #00000073;
+    margin-bottom: 0 !important ;
+    width: 472px;
+    padding: 10px 8px !important;
+}
+.actu2 .vce-post-description--category-link,
+.actu2 .vce-post-description--excerpt {
+    display: none;
+}
+.actu2 .vce-post-description {
+    padding-top: 180px !important;
+}
+.actu2 .vce-post-description:hover .vce-post-link {
+    top: 50px !important;
+    margin-top: -50px !important;
+    opacity: 0 !important;
+}
+.actu2 .vce-post-link {
+    height: 15px;
+}
+.evenement .vce-post-grid-with-box-title {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+}
+.evenement .vce-post-description--excerpt,
+.pub .vce-post-description--excerpt {
+    font-family: Montserrat;
+    font-size: 13px;
+}
+.pub .vce-post-slider-block-item-title {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+/*** actulite accueil v1 ***/
+.actu .vce-post-description--title {
+    font-family: Montserrat;
+    font-size: 16px !important;
+    margin-bottom: 25px !important;
+    margin-top: 10px !important;
+    word-break: normal !important;
+}
+/*.actu .vce-post-description--excerpt>p {
+    font-family: Montserrat;
+    font-size: 12px !important;
+    margin-bottom: 10px !important;
+}*/
+.actu .vce-post-link span {
+    margin-bottom: 10px !important;
+}
+.actu .vce-post-description--excerpt p{
+    display:none;
+}
+.actu .vce-button--style-basic{
+    background-color: #02578D !important;
+}
+.actu .vce-post-description--image{
+    padding-bottom:28% !important;
+}
+/*** exploiter et investir ***/
+.exploiter-investir .vce-button--style-basic {
+    font-size: 12.5px !important;
+}
+
+/*** evenements ***/
+.wppsac-post-list-content {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.event .wppsac-post-slider .wppsac-post-date,
+.event .wppsac-sub-content {
+    color: #FFF !important;
+    font-family: Montserrat;
+}
+/*.event .wppsac-post-title {
+     text-align: center;
+   box-shadow: 0 0 13px 5px rgb(0 0 0 / 0.13);
+    background: #fff;
+    padding: 15px 15px;
+}*/
+.event .wppsac-post-list-content .wppsac-post-title>a {
+    color: #fff !important;
+    font-family: Montserrat;
+    font-size: 22px !important;
+}
+.event .wppsac-post-slider .wppsac-post-date {
+    margin-top: 15px;
+}
+.wppsac-sub-content {
+    padding-bottom: 40px !important;
+}
+.event .wppsac-readmorebtn {
+    border: 0 !important;
+    background-color: #fff;
+    padding: 15px 20px !important;
+    color: #2698e1 !important;
+    font-family: Montserrat;
+}
+.event .wppsac-post-slider.design-4 .wppsac-post-image-bg {
+    background: #fff !important;
+    padding: 15px
+}
+.wppsac-post-slider.design-4 .wppsac-post-image-bg {
+    height: 300px !important;
+}
+.wppsac-post-slider.design-4 .slick-prev {
+    left: -30px !important;
+}
+.wppsac-post-slider.design-4 .slick-next {
+    right: -30px !important;
+}
+.event .wppsac-post-slider.design-4 .slick-prev,
+.event .wppsac-post-slider.design-4 .slick-next {
+    background-color: transparent !important;
+    background-size: 50px 50px !important;
+}
+.event .wppsac-post-slider.design-4 .slick-prev:hover,
+.event .wppsac-post-slider.design-4 .slick-next:hover {
+    background-color: transparent !important;
+}
+
+/**** publication  ****/
+.publication .wppsac-post-list-content .wppsac-post-title>a,
+.publication .wppsac-post-slider .wppsac-post-date,
+.publication .wppsac-sub-content {
+    color: #000 !important;
+    font-family: Montserrat;
+}
+.publication .wppsac-sub-content {
+    padding-top: 15px !important;
+    background: url(/wp-content/uploads/2020/07/tiret-e1595331445323.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 40px;
+}
+.publication .wppsac-post-list-content .wppsac-post-title>a{
+    font-size: 30px !important;
+}
+.publication .wppsac-post-slider.design-4 .slick-prev,
+.publication .wppsac-post-slider.design-4 .slick-next {
+    background-size: 35px 35px !important;
+}
+.publication .wppsac-readmorebtn {
+    border: 0 !important;
+    background-color: #02578d;
+    padding: 15px 20px !important;
+    color: #fff !important;
+    font-family: Montserrat;
+}
+
+
+/**** modele blog ****/
+.separateur-article .vce-separator {
+    transform: rotateZ(90deg);
+    width: 50px;
+}
+
+
+
+/**** formulaire de contact ***/
+.contact-form label {
+    font-family: Montserrat;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+}
+.contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%;
+    padding-left: 10px;
+    border: 1px solid #333333;
+    border-radius: 3px;
+    outline: none;
+}
+.contact-form input, .contact-form select {
+    height: 40px;
+}
+.contact-form textarea {
+    height: 100px;
+}
+input.wpcf7-form-control.wpcf7-submit {
+    border: 0;
+    color: #fff;
+    background: #2698e1;
+    height: 50px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+/***** modele page ******/
+.titre-page .vce-google-fonts-heading-inner {
+    text-transform: uppercase;
+    text-align: center;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+}
+.accordeon .vce-classic-accordion-inner {
+    box-shadow: none;
+}
+.accordeon .vce-classic-accordion-panel-heading {
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 10%);
+}
+.accordeon .vce-classic-accordion-panel {
+    border: 0;
+}
+.accordeon .vce-classic-accordion-panel-title {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+
+/****** style Footer ****/
+.vce-copyright {
+    margin-bottom: 0 !important;
+    font-family: Montserrat;
+    font-size: 13.33px;
+}
+.vcv-footer .vce-icon-button-title {
+    font-family: Montserrat;
+    text-align: left !important;
+}
+.tnp-widget-minimal input.tnp-email {
+    width: 80% !important;
+    background: #fff !important;
+    font-family: Montserrat;
+    border-color: transparent !important;
+}
+.tnp-widget-minimal input.tnp-submit {
+    width: 20% !important;
+    background: #000 !important;
+    padding: 14px !important;
+}
+/*#black-footer .vce-text-block-wrapper ul>li:before {
+    content: '\002192' !important;
+    font-size: 1.4em !important;
+    left: 5px !important;
+    top: -1px;
+    color: #fff !important;
+}*/
+.vcv-footer .vce-text-block .vce-text-block-wrapper{
+    color:white !important;
+}
+
+/*************************Code sarah*****************/
+
+/*social icon french in header*/
+.social-row { 
+	transform: rotate(90deg);
+	z-index: 2;
+    position: fixed !important;
+    right:-35px !important;
+    top: 300px;
+}
+.social-row	.vce-social-profile-icon{
+transform: rotate(-90deg);
+}
+/*social icon arabic in header*/
+
+.social-row-ar {  
+	transform: rotate(90deg);
+	z-index: 2;
+    position: fixed !important;
+    left: -60px;
+    top: 300px;
+}
+.social-row-ar	.vce-social-profile-icon{
+transform: rotate(-90deg);
+}
+
+/*post grid design4 (page d'accueil)*/
+/* .wp-medium-7.wpcolumns{
+       border: 1px solid #ffffff;
+       margin-right:5px;
+ }*/
+ /*post grid design 3 (evenement) */
+
+.principe-slider .wppsac-post-date,
+.principe-slider .wppsac-post-content{
+     display: none;
+ }
+.principe-slider .slick-dots{
+    display:none !important;
+}
+.principe-slider .wppsac-post-title{
+    font-family: Montserrat !important ;
+}
+.principe-slider .wppsac-post-short-content{
+    height:28% !important;
+    margin-left:200px !important;
+}
+
+.principe-slider .wppsac-post-categories .wppsac-post-categories-list  li a{
+    position: absolute;
+    top:343px;
+    left:-2px !important;
+    height:134px !important;
+    width: 201px !important;
+    border:none !important;
+    background :rgba(38, 152, 225, 0.6) !important;
+    font-family: Montserrat !important ;
+    font-size:20px !important;
+    padding-top:50px !important;
+    padding-left:24px !important;
+    font-weight:600;
+    text-align:center !important;
+   
+}
+.principe-slider .wppsac-post-image-bg {
+    height:479px !important;/*525*/
+}
+
+/****page médiatheque******/
+.video-butt .vce.vce-features-icon-wrapper{
+    position: absolute;
+    top: 88px;
+    left: 244px;
+}
+ .video-butt .vce.vce-features-icon-wrapper a{
+ box-shadow: 0px 0px 6px 6px;
+}
+.video-butt .vce.vce-features-icon-wrapper:hover{
+    cursor:pointer;
+}
+
+.vce-separated-button .vce-separated-button-text{
+    text-align:left !important;
+}
+
+/****le hover sur le menu principal***/
+.menu .menu-item:hover {
+	background:white !important;
+	}
+.menu .menu-item:hover  >a{
+	color:#2066ab !important;	
+}
+/***deuxieme variante du menu vertical*/
+.act-bu-v .vce-button--style-basic-icon-inner{
+    text-align:left;
+    font-size: 14px;
+    width: 200px;
+    font-family:Montserrat !important;
+}
+
+
+/******* page suivi des entreprises ******/
+
+.vce-text-block table tr td p{
+  margin-bottom:0.5rem !important;  
+    
+}
+
+/*******page annuaire************/
+
+#annuaire  .vce-faq-group-item-heading .vce-faq-group-item-heading-title{
+    font-family: Montserrat !important;
+    font-weight: 600 !important;
+   
+   }
+   /********** Le changement de style de tab**********/
+#artisan .vce-classic-tabs-tab{
+	text-transform:uppercase;
+    line-height: 30px;
+    background-color: #ebebeb;
+}
+#artisan .vce-classic-tabs-tab a{
+  color: #999 !important;
+}
+#artisan .vce-classic-tabs-tab a:hover{
+	color: #02578d !important;
+}
+
+#artisan .vce-classic-tabs-panels-container{
+	border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+#artisan .vce-classic-tabs-tab[data-vcv-active=true]{
+	background-color: #fff !important;
+	border-top: 2px solid #00abc9 !important;
+}
+#artisan .vce-classic-tabs-tab[data-vcv-active=true] a{
+	color: #02578d !important
+}
+
+.vce-flip-box-front h2 {
+    
+    font-weight: 600 !important;
+    font-family: montserrat !important;
+    font-size: 38px !important;
+}
+.frm_primary_label {
+    color:#2066ab !important;
+    font-weight:600 !important;
+}
+.wpml-ls-legacy-list-horizontal a{
+    color: black !important;
+}
+/***************************page actualité************************/
+.actua .vce-post-grid-with-hover-button-title{
+    font-family :montserrat !important;
+    font-size:23px !important;
+}
+
+/***********************Version arabe************************/
+
+
+/***framework****/
+/****************arabic font-family style*******/
+ span:lang(ar):not(.vce-icon-container) {
+ font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;}
+ p:lang(ar):not(.vce-icon-container) {
+ font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;}
+ .vce-google-fonts-heading-wrapper .vce-google-fonts-heading-inner:lang(ar){
+      font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+ }
+ .vce-faq-toggle-title-text:lang(ar){
+     font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+ }
+#arabic-style span{
+    font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+#g-style .vce-google-fonts-heading-wrapper .vce-google-fonts-heading-inner{
+     font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+
+/****************menu************/
+.menu-main-menu-ar-container .menu-item a{
+       font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+    font-size:16px !important;
+}
+.menu-main-menu-ar-container .menu-item > .sub-menu{
+   right:0 !important;
+   left:unset !important;
+}
+.menu-main-menu-ar-container .menu-item .sub-menu .menu-item > .sub-menu{
+    right:100% !important;
+} 
+.menu-main-menu-ar-container .menu-item .sub-menu .menu-item a{
+    font-size:14px !important;
+}
+
+/*********************Pricipal slider arabic**********************/
+#ar-principe-slider .wppsac-post-categories .wppsac-post-categories-list  li a{
+        font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+    }
+
+#ar-principe-slider .wppsac-post-title{
+    font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+
+/***publication-slider*********/
+#pub-ar .wppsac-post-slider .wppsac-post-date::after{
+    right:0 !important;
+    left: unset !important;
+}
+#pub-ar .wppsac-post-list-content   .wppsac-post-title> a{
+    font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+#event-ar .wppsac-post-list-content .wppsac-post-title> a{
+    font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+#event-ar .wppsac-post-slider .wppsac-post-date::after{
+    right:0 !important;
+    left: unset !important;
+}
+#pub-ar .wppsac-readmorebtn{
+    position: relative;
+    top:20px;
+}
+#arb-panel .vce-classic-accordion-panel-title{
+    text-align:right;
+    font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+/****actualité****/
+
+#act-ar .vce-post-description--title {
+    letter-spacing: 0px !important;
+	font-size: 17px !important;
+	color: black !important;
+	font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+#act-ar .vce-button--style-basic.vce-button--style-basic--size-small{
+	font-size: 11px;
+font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;}
+
+.wppsac-post-slider .wppsac-post-content a.wppsac-readmorebtn{
+	font-size: 13px !important;
+	font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+
+#pub-ar .wppsac-readmorebtn{
+	padding:10px 20px !important;
+}
+.wppsac-sub-content {
+	font-family:'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+/***page accueil expoloiter er inverstir*/
+.exploiter-investir-ar .vce-button--style-basic {
+    font-size:14px !important;
+     font-family: 'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+.connaitre-ar .vce-button--style-basic{
+     font-size: 16px !important;
+     font-family: 'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+#annuaire-ar  .vce-faq-group-item-heading .vce-faq-group-item-heading-title{
+    font-family: 'Droid Arabic Naskh','Open Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 18px;
+   
+   }
+ .fix-width .vce-faq-group-item  table {
+       width:auto !important;
+   }
+#cellule label{
+    font-size: 16px !important;
+}
+#cellule .wpcf7-form-control.wpcf7-select{
+    direction:rtl;
+}
+/***boutton arabe***/
+#arb-bout .vce-button--style-basic-icon-inner{
+      text-align:right !important;
+      font-size: 15px !important;
+        font-family: 'Droid Arabic Naskh','Open Sans', sans-serif !important;
+}
+#simple-btn-ar {
+     font-family: 'Droid Arabic Naskh','Open Sans', sans-serif !important;
+     font-size: 12px !important;
+}
+
+/*
+#act-ar .vce-post-description--title {
+    letter-spacing: 1px !important;
+}
+*/
+
+/**************************page de recherche arabe*************************/
+.rtl.search .entry-meta{
+    display:none !important;
+} 
+.rtl.search .blue-button.read-more{
+     display:none !important;
+}
+/**************************page de recherche français*************************/
+.search .entry-meta{
+    display:none !important;
+} 
+.search .blue-button.read-more{
+     display:none !important;
+}
+
+/****page d'acceil partie 6 box*/
+
+
+/*************responsivité Français **********/
+/*smartphone*/
+@media only screen and (max-width: 766px)  {
+
+#copy-left {
+    text-align:left !important;
+    }
+.reverse-row .vce-row-content{
+    flex-direction: column-reverse;
+}
+/****to make text left***/
+#text-left .vce-text-block-wrapper p{
+    text-align:left !important;
+}
+/************slider************/
+.principe-slider .wppsac-post-categories .wppsac-post-categories-list  li a{
+    width: 100px !important;
+    padding-left:0 !important;
+    font-size:14px !important;
+}
+.principe-slider .wppsac-post-title a{
+    font-size:16px !important;
+}
+.principe-slider .wppsac-post-short-content{
+    margin-left:100px !important;
+    padding-top:0 !important;
+    padding-left:6px !important;
+    padding-right:0 !important
+}
+.publication .wppsac-post-list-content .wppsac-post-title>a ,
+.event .wppsac-post-list-content .wppsac-post-title>a {
+    font-size:18px !important;
+     line-height:20px !important;
+     font-weight:600;
+}
+.publication .wppsac-sub-content, 
+.event .wppsac-sub-content{
+     font-size:12px !important;
+}
+.publication .wppsac-readmorebtn{
+    position:relative;
+    top:18px;
+}
+
+/*****titre de chage page***/
+.page-title-fr .vce-google-fonts-heading-inner,
+.page-title-fr span{
+    text-align:center;
+    font-size:25px !important;
+}
+.page-titre .vce-google-fonts-heading-inner{
+    font-size:20px !important;
+}
+.sm-title .vce-google-fonts-heading-inner{
+      font-size:16px !important;
+}
+
+/****page sondage*/
+#sond-title span{
+    font-size: 20px !important;
+}
+/****page liens utiles *****/
+.vce-classic-tabs-panel-title{
+    color: #02578d!important;
+    font-weight: 600;
+    font-family: montserrat;
+    font-size: 17px;
+}
+/**à revoir**/
+#annuaire .vce-faq-group-item-content{
+   overflow-x: scroll !important;
+}
+.justif .vce-text-block-wrapper {
+    overflow-x: scroll !important;
+}
+}
+
+
+
+/****tabelette******/
+@media only screen and (max-width: 991px) and (min-width: 767px){ 
+    .reverse-row .vce-row-content{
+    flex-direction: column-reverse;
+}
+/*****titres de chaque page***/
+.page-title-fr .vce-google-fonts-heading-inner,
+.page-title-fr span{
+    text-align:center;
+    font-size:26px !important;
+}
+.page-titre .vce-google-fonts-heading-inner{
+    font-size:23px !important;
+}
+.sm-title .vce-google-fonts-heading-inner{
+      font-size:16px !important;
+}
+
+.act-bu-v .vce-button--style-basic-icon-inner {
+    width:145px !important;
+}
+
+
+.embed_download {
+    width:200px!important;
+}
+.justif .vce-text-block-wrapper {
+    overflow-x: scroll !important;
+}
+.vce-tall-hoverbox a.vce-google-fonts-heading-link{
+    font-size: 12px !important;
+}
+.med-but .vce-button--style-animated-outline-inner {
+	
+    font-size: 18px !important;
+}
+}
+
+/****laptop**/
+@media only screen and (max-width: 1300px) and (min-width: 1020px){
+  
+.h-menu .menu-main-menu-container  .menu-item  a{
+    font-size: 9px!important;
+    
+}
+/*****titre de chage page***/
+.page-title-fr .vce-google-fonts-heading-inner,
+.page-title-fr span{
+    text-align:center;
+    font-size:25px !important;
+}
+.page-titre .vce-google-fonts-heading-inner{
+    font-size:20px !important;
+}
+.sm-title .vce-google-fonts-heading-inner{
+      font-size:18px !important;
+}
+.justif .vce-text-block-wrapper {
+    overflow-x: scroll !important;
+}
+}
+
+
+/*************responsivité Arabe **********/
+/*smartphone*/
+@media only screen and (max-width: 766px)  {
+/***** Start page d'accuiel****/
+.social-row-ar {
+        left:-55px !important;
+    }
+/*page contact ar+français */
+.small-title .vce-google-fonts-heading-inner{
+    font-size:24px !important;
+}
+/*#pub-ar .wppsac-readmorebtn{
+    position:relative !important;
+    left:0 !important;
+}*/
+
+  /*faire mm chose en français */
+.publication .wppsac-post-list-content,
+.event .wppsac-post-list-content{
+   display:block !important;
+}
+.box-row{
+    height: 680px!important;
+    max-height: 680px!important;
+}
+/***** End page d'acceuil****/
+
+/***** titre des  pages ****/
+.page-title-ar .vce-google-fonts-heading-inner,
+.page-title-ar span{
+    text-align:center;
+    font-size:22px !important;
+}
+/*****les tableau***/
+.w-table table {
+    width:auto;
+}
+/***à revoir*/
+.vce-faq-group .vce-faq-group-item  .vce-faq-group-item-content{
+        overflow-x: scroll;
+}
+
+/****page médiathèque***/
+.video-butt .vce-features-icon-wrapper {
+  
+    top: 42px !important;
+    left: 137px !important;
+    
+}
+
+}
+/****tabelette******/
+@media only screen and (max-width: 991px) and (min-width: 767px){
+    .small-title .vce-google-fonts-heading-inner{
+    font-size:30px !important;}
+    /***** Start page d'accuiel****/
+  .wppsac-post-slider.design-3 .wppsac-post-image-bg img  {
+      max-width: 900px !important;
+  }
+  /*faire mm chose en français */
+  .vce-posts-grid-item{
+      flex:0 0 calc(100% / 3) !important;
+  }
+
+    
+/*****End page d'accuiel****/
+
+
+
+/***** titre des  pages ****/
+.page-title-ar .vce-google-fonts-heading-inner,
+.page-title-ar span{
+    text-align:center;
+    font-size:25px !important;
+}
+.w-table table {
+    width:auto;
+}
+.video-butt .vce-features-icon-wrapper{
+    top: 53px !important;
+    left: 158px !important;
+}
+}
+/****laptop**/
+@media only screen and (max-width: 1300px) and (min-width: 1020px){
+  
+    /*** start menu princial*/
+      /*faire mm chose en français */
+.menu-main-menu-ar-container .menu-item a{
+    font-size: 12px!important;
+}
+    /*** End menu princial*/
+.page-title-ar .vce-google-fonts-heading-inner,
+.page-title-ar span{
+    text-align:center;
+    font-size:25px !important;
+}
+}
+
+

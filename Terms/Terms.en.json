@@ -1,0 +1,187 @@
+{
+    "termsOfUse": {
+      "title": "Terms of Use for the Car Rental Agencies Listing Platform",
+      "lastUpdated": "Last Updated",
+      "welcome": "Welcome to {{platformName}}. By using this website or application, you agree to the following Terms of Use. Please read them carefully before using the platform's services.",
+
+      "platformDefinition": {
+        "title": "Platform Definition",
+        "description1": "{{platformName}} is an online platform designed to connect users seeking vehicle rentals with car rental agencies listed on the platform.",
+        "description2": "The platform is not a car rental agency and does not own, manage, or rent any vehicle displayed through the website."
+      },
+
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "intro": "By using the platform, the user acknowledges that they:",
+        "items": [
+          "Have read these Terms of Use.",
+          "Understand their content.",
+          "Agree to comply with them in full."
+        ],
+        "outro": "If you do not agree to these terms, please do not use the platform."
+      },
+
+      "serviceNature": {
+        "title": "Nature of the Service",
+        "intro": "The platform provides the following services:",
+        "items": [
+          "Displaying agencies and available vehicles.",
+          "Allowing users to search and compare options.",
+          "Facilitating communication or reservation requests between users and agencies."
+        ],
+        "outro": "The platform does not guarantee or commit to the completion of any rental transaction."
+      },
+
+      "contractualRelationship": {
+        "title": "Contractual Relationship",
+        "intro": "All rental agreements are concluded directly between:",
+        "items": [
+          "The user (renter)",
+          "The car rental agency"
+        ],
+        "outro": "The platform is not a party to any contract, agreement, or dispute arising between the parties."
+      },
+
+      "agencyResponsibility": {
+        "title": "Agency Responsibility",
+        "intro": "The agency bears sole responsibility for:",
+        "items": [
+          "The accuracy of published information.",
+          "Rental pricing.",
+          "Vehicle availability.",
+          "Legal insurance coverage.",
+          "Vehicle condition and safety.",
+          "Execution of rental agreements."
+        ]
+      },
+
+      "userResponsibility": {
+        "title": "User Responsibility",
+        "intro": "The user agrees to:",
+        "items": [
+          "Provide accurate and truthful information.",
+          "Not use the platform for unlawful purposes.",
+          "Comply with applicable laws and regulations.",
+          "Not impersonate others."
+        ],
+        "outro": "The user bears full responsibility for any unlawful information or actions."
+      },
+
+      "platformLiability": {
+        "title": "Limitation of Liability",
+        "intro": "The platform shall not be liable for:",
+        "items": [
+          "Traffic accidents.",
+          "Material or bodily damages.",
+          "Legal violations.",
+          "Reservation delays or cancellations.",
+          "Quality of services provided by agencies.",
+          "Financial disputes between users and agencies.",
+          "Loss or damage of property."
+        ],
+        "outro": "The platform's responsibility is limited solely to providing the electronic service."
+      },
+
+      "informationAccuracy": {
+        "title": "Information Accuracy",
+        "intro": "The platform makes reasonable efforts to ensure the accuracy of displayed information but does not guarantee:",
+        "items": [
+          "Completeness of information.",
+          "Absolute accuracy.",
+          "Continuous updates."
+        ],
+        "outro": "The agency remains responsible for the information it publishes."
+      },
+
+      "fees": {
+        "title": "Fees and Commissions",
+        "description1": "The platform may charge fees or commissions to agencies or for certain optional services.",
+        "description2": "Any fees will be clearly disclosed before they become due."
+      },
+
+      "accounts": {
+        "title": "User Accounts",
+        "intro": "When creating an account, the user agrees to:",
+        "items": [
+          "Keep login credentials confidential.",
+          "Not share the account with others.",
+          "Notify the platform immediately of any suspected unauthorized use."
+        ]
+      },
+
+      "content": {
+        "title": "Published Content",
+        "intro": "The publication of content that is:",
+        "items": [
+          "Illegal.",
+          "Misleading or false.",
+          "Infringing intellectual property rights.",
+          "Abusive, defamatory, or inciting."
+        ],
+        "outro": "is prohibited. The platform may remove any violating content without prior notice."
+      },
+
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "intro": "All rights related to the website and application, including:",
+        "items": [
+          "Design.",
+          "Logo.",
+          "Texts.",
+          "Software."
+        ],
+        "outro": "are owned by {{platformName}} or its licensors and may not be copied or reused without prior written permission."
+      },
+
+      "privacy": {
+        "title": "Data Protection and Privacy",
+        "description1": "The platform processes personal data in accordance with applicable laws.",
+        "description2": "Users agree to the collection and use of data necessary for operating and improving the platform."
+      },
+
+      "suspension": {
+        "title": "Suspension or Termination",
+        "intro": "The platform may:",
+        "items": [
+          "Suspend violating accounts.",
+          "Revoke access to the service.",
+          "Remove violating content."
+        ],
+        "outro": "without liability toward the violating user."
+      },
+
+      "modifications": {
+        "title": "Modifications",
+        "description1": "The platform reserves the right to modify these Terms of Use at any time.",
+        "description2": "Continued use of the platform after publication of modifications constitutes acceptance of them."
+      },
+
+      "governingLaw": {
+        "title": "Governing Law",
+        "description": "These terms are governed by the laws of the People's Democratic Republic of Algeria."
+      },
+
+      "disputes": {
+        "title": "Dispute Resolution",
+        "intro": "In the event of a dispute related to the use of the platform:",
+        "items": [
+          "The parties shall first seek an amicable settlement.",
+          "If unsuccessful, Algerian courts shall have jurisdiction.",
+          "The competent courts shall be those of the platform's registered headquarters unless otherwise required by law."
+        ]
+      },
+
+      "contact": {
+        "title": "Contact Information",
+        "platformName": "Platform Name",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address"
+      },
+
+      "disclaimer": {
+        "title": "Important Disclaimer",
+        "text": "{{platformName}} is solely an online intermediary and listing platform. It is neither the owner nor the lessor of the listed vehicles and bears no contractual, legal, or financial responsibility arising from the relationship between users and car rental agencies."
+      }
+    }
+  }
