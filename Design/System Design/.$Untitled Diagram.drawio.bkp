@@ -1,0 +1,44 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="D-iN4L_vEPhNGiWpHge4">
+    <mxGraphModel dx="951" dy="637" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-5" parent="1" style="shape=folder;fontStyle=1;tabWidth=160;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;whiteSpace=wrap;fillColor=none;" value="Presentation Layer" vertex="1">
+          <mxGeometry height="340" width="240" x="40" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-6" parent="AkGt83K6TpnxWH0jMp4S-5" style="html=1;strokeColor=none;resizeWidth=1;resizeHeight=1;fillColor=none;part=1;connectable=0;allowArrows=0;deletable=0;whiteSpace=wrap;" value="" vertex="1">
+          <mxGeometry height="238.00000000000006" relative="1" width="240" as="geometry">
+            <mxPoint y="30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-4" parent="AkGt83K6TpnxWH0jMp4S-5" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" value="Desktop Admin" vertex="1">
+          <mxGeometry height="51.67" width="170" x="30" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-10" parent="AkGt83K6TpnxWH0jMp4S-5" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" value="Web Application" vertex="1">
+          <mxGeometry height="51.67" width="170" x="30" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-11" parent="AkGt83K6TpnxWH0jMp4S-5" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" value="Mobile Application" vertex="1">
+          <mxGeometry height="51.66666666666667" width="170" x="30" y="247.66333333333336" as="geometry" />
+        </mxCell>
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-7" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="585" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-8" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=90;" value="" vertex="1">
+          <mxGeometry height="120" width="60" x="450" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-12" parent="1" style="shape=folder;fontStyle=1;tabWidth=160;tabHeight=30;tabPosition=left;html=1;boundedLbl=1;labelInHeader=1;container=1;collapsible=0;whiteSpace=wrap;fillColor=none;" value="External Services" vertex="1">
+          <mxGeometry height="340" width="240" x="390" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-13" parent="AkGt83K6TpnxWH0jMp4S-12" style="html=1;strokeColor=none;resizeWidth=1;resizeHeight=1;fillColor=none;part=1;connectable=0;allowArrows=0;deletable=0;whiteSpace=wrap;" value="" vertex="1">
+          <mxGeometry height="238.00000000000006" relative="1" width="240" as="geometry">
+            <mxPoint y="30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AkGt83K6TpnxWH0jMp4S-17" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" value="Desktop Admin" vertex="1">
+          <mxGeometry height="51.67" width="170" x="690" y="240" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

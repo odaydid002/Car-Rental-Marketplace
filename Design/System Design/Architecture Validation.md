@@ -8,6 +8,22 @@
 ### Architecture Diagram Reviewed
 The architecture diagram presents a clear N-Tier/Layered Architecture with six major layers and external service integration. The separation between Presentation, Business, Data Access, Data, Infrastructure, and Monitoring layers is well represented and easy to understand. (Image: N-tier layered architecture overview)
 
+### UML Component Styling
+Use the following PlantUML snippet for a UML 2 component diagram style; this avoids draw.io and keeps the diagram source-based and portable:
+
+```plantuml
+@startuml
+skinparam componentStyle uml2
+
+component "API Gateway" as Gateway
+component "Auth Service"
+component "Reservation Service"
+
+Gateway --> Auth Service
+Gateway --> Reservation Service
+@enduml
+```
+
 ---
 
 # Executive Summary
