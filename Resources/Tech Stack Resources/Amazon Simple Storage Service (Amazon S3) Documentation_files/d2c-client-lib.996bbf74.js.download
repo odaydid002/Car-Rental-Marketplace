@@ -1,0 +1,2 @@
+System.register(["./index-e7b4934c.js"],(function(e){"use strict";return{setters:[function(t){e("setupCookieConfig",t.s)}],execute:function(){}}}));
+//# sourceMappingURL=d2c-client-lib.996bbf74.js.map

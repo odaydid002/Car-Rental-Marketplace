@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-07-17T00:00:00.000Z" agent="GitHub Copilot" etag="48K8MW7WUXeGM3JgHjuP" version="20.6.4" type="device">
+  <diagram id="layered-architecture" name="Layered Architecture">
+    <mxGraphModel dx="1134" dy="776" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="2" value="Mobile UI (React Native Components)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontColor=#333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="700" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="3" value="Application Layer\n- Navigation Management\n- Authentication Flow\n- Route Protection\n- Session Management\n- Error Handling" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontColor=#333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="165" width="700" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="4" value="State Management Layer\nGlobal State (Redux Toolkit / Zustand)\n- User\n- Vehicles\n- Reservations\n- Payments\n- Notifications\n- Settings\n- Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontColor=#333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="700" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="5" value="Service Layer\n- Auth Service\n- Vehicle Service\n- Reservation Service\n- Payment Service\n- Review Service\n- AI Service\n- Notification Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontColor=#333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="455" width="700" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="6" value="Device Services Layer\n- Location Service\n- Camera Service\n- Push Notifications\n- Local Storage\n- Offline Sync Service\n- Device Info Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontColor=#333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="600" width="700" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="7" value="Communication Layer\n- REST API (HTTPS)\n- WebSocket (WSS)\n- Network Manager\n- Secure Storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d9d2e9;strokeColor=#8e7cc3;fontSize=13;fontColor=#333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="745" width="700" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="8" value="Backend API (NestJS)\nBusiness Services, Authentication, Database, File Storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=13;fontColor=#333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="890" width="700" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="9" edge="1" source="2" target="3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="10" edge="1" source="3" target="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="11" edge="1" source="4" target="5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="12" edge="1" source="5" target="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="13" edge="1" source="6" target="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="14" edge="1" source="7" target="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

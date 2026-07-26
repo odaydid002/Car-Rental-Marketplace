@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+          <script type="module" src="/assets/hostInit-BWKa7Ave.js"></script>
+        
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Critical DNS prefetching and preconnections -->
+    <link rel="dns-prefetch" href="//api.integrate.com" />
+    <link rel="dns-prefetch" href="//staging.api.integrate.com" />
+    <link rel="dns-prefetch" href="//cdn.pendo.io" />
+    <link rel="dns-prefetch" href="//app.pendo.io" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="On Integrate, marketers can create more precise and personalized buying experiences that reach the right buyer with the right message at the right point in their buying journey, and ultimately convert more leads to revenue."
+    />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+
+    <!-- Optimized font loading with preload -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Roboto Mono Font with preload -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Preload LCP image (nav logo) for faster discovery -->
+    <link
+      rel="preload"
+      href="/Integrate_logo_white.svg"
+      as="image"
+      type="image/svg+xml"
+      fetchpriority="high"
+    />
+
+    <!-- Configuration: deferred to unblock initial render, executes before main module script -->
+    <script src="/config.js" defer></script>
+
+    <!-- Load Pendo early via defer so it's available before React mounts -->
+    <script src="/pendo.js" defer></script>
+
+    <link rel="manifest" href="/manifest.json" />
+    <title>Integrate</title>
+    <script type="module" crossorigin src="/assets/index-C6r2Vr-k.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/preload-helper-BhLMWRjL.js">
+    <link rel="modulepreload" crossorigin href="/assets/hostApp__mf_v__runtimeInit__mf_v__-DCfQoz6q.js">
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <div id="modal-root"></div>
+    <div id="file-upload-popup-root"></div>
+
+  </body>
+</html>
