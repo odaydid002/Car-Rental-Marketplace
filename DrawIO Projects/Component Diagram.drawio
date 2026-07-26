@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Page-1" id="D-iN4L_vEPhNGiWpHge4">
-    <mxGraphModel dx="381" dy="277" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="1996" dy="1496" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -830,9 +830,6 @@
         </mxCell>
         <mxCell id="CL0KmCGw0fHGeGzsCkal-302" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=default;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Cach&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;interface&lt;/span&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="45" width="60" x="1700.34" y="431" as="geometry" />
-        </mxCell>
-        <mxCell id="k11zPnGP-1qi85oKIJWl-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="Text" vertex="1">
-          <mxGeometry height="30" width="60" x="780" y="790" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
