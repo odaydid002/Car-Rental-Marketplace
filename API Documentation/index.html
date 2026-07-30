@@ -1,0 +1,4552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    :root {
+      /*  Colors  */
+      --color-main: #3dade2;
+      --color-main-low: color-mix(in srgb, var(--color-main) 15%, transparent);
+      --color-second: #FDF4E7;
+      --color-second2: #092846;
+      --text-white: white;
+      --text-black: black;
+      --border: #7575757c;
+      --border-low: #75757515;
+      --trans-grey: rgba(128, 128, 128, 0.09);
+      /*----------*/
+      /*    Font   */
+      --icon-size: 1.5rem;
+      --text-s: 0.6rem;
+      --text-m: 0.8rem;
+      --text-l: 1rem;
+      --text-xl: 1.2rem;
+      --text-xxl: 1.5rem;
+      /*----------*/
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #E5E8EB;
+        --text-low: #ffffff52;
+        --bg: #1C1C1D;
+        --bgc: #252728;
+        --logo-color: var(--color-second);
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --text: #333;
+        --text-low: #626569;
+        --bg: #F2F4F7;
+        --bgc: #FFFFFF;
+        --logo-color: var(--color-second2);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      padding: 0;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      text-rendering: optimizeLegibility !important;
+      font-smooth: always !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: var(--text);
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      background-color: var(--bg);
+    }
+
+    .header {
+      width: 100%;
+      padding: 1em 2em;
+      height: 8em;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .st0 {
+      stroke: #000;
+    }
+
+    .st0,
+    .st1 {
+      fill: none;
+      stroke-miterlimit: 10;
+    }
+
+    .st1 {
+      stroke: var(--logo-color);
+      stroke-width: 13px;
+    }
+
+    .st2 {
+      fill: var(--color-main);
+    }
+
+    .st3 {
+      fill: var(--logo-color);
+    }
+
+    .logo {
+      width: 30px;
+      height: 30px;
+      margin-right: 1em;
+      background-color: white;
+      border-radius: 0.5em;
+      padding: 0.125em;
+    }
+
+    .title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .head-title {
+      font-size: 1.25rem;
+      margin-top: 1em;
+      color: var(--text);
+    }
+
+    .head-description {
+      font-size: 0.9rem;
+      margin-top: 0.25em;
+      color: var(--text-low);
+    }
+
+    .main-container {
+      width: 100%;
+      height: calc(100% - 8em);
+      overflow: hidden;
+      overflow-y: auto;
+      padding: 0 2em 1em 2em;
+    }
+
+    .main-container::-webkit-scrollbar {
+      width: 6px;
+      background-color: var(--trans-grey);
+      border-radius: 5px;
+    }
+
+    .main-container::-webkit-scrollbar-thumb {
+      background: var(--color-main);
+      border-radius: 5px;
+    }
+
+    .api {
+      width: 100%;
+      overflow: hidden;
+      height: 4em;
+      margin: 1em 0;
+      transition: ease-in-out 0.6s;
+    }
+
+    .api-expended {}
+
+    .api-head {
+      width: 100%;
+      height: 4em;
+      border-radius: 0.625rem;
+      background-color: var(--bgc);
+      padding: 0 2em;
+      display: flex;
+      transition: ease-in-out 0.5s;
+      align-items: center;
+    }
+
+    .api-head:hover,
+    .endpoint:hover {
+      opacity: 0.8;
+      border: 1px solid rgba(122, 122, 122, 0.312);
+    }
+
+    .target {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .api-description {
+      font-size: 0.8rem;
+      color: var(--text-low);
+      margin-left: 2em;
+    }
+
+    .chevron {
+      width: auto;
+      height: 1.2em;
+      fill: var(--text-low);
+      transform: rotate(180deg);
+      transition: ease-in-out 0.6s;
+    }
+
+    .active {
+      transform: rotateZ(0deg);
+    }
+
+    .api-head .chevron {
+      margin-left: auto;
+    }
+
+    .endpoints {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: fit-content;
+    }
+
+    .endpoint {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0 2em;
+      background-color: var(--bgc);
+      margin-top: 0.5em;
+      border-radius: 10px;
+      height: 4em;
+      overflow: hidden;
+      transition: ease-in-out 0.6s;
+    }
+
+    .expanded {
+      height: 12.5em;
+    }
+
+    .endpoint-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 4em;
+    }
+
+    .methode {
+      border-radius: 5px;
+      padding: 0.25em 0.625em;
+    }
+
+    .methode p {
+      font-size: 0.8rem;
+      color: white;
+    }
+
+    .m-get {
+        background-color: rgb(96, 218, 112);
+    }
+    
+    .m-post {
+        background-color: rgb(73, 165, 226);
+    }
+
+    .m-put {
+        background-color: rgb(251, 141, 56);
+    }
+
+    .m-delete {
+        background-color: rgb(229, 75, 75);
+    }
+
+    .m-patch {
+        background-color: rgb(163, 60, 241);
+    }
+
+    .route {
+      font-size: 0.8rem;
+      color: var(--text-low);
+      margin-left: 2em;
+    }
+
+    .flex-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .endpoint-title {
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+
+    .lock {
+      margin-right: 1em;
+      width: auto;
+      height: 1em;
+      fill: var(--text-low);
+    }
+
+    .endpoint-body {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid var(--border-low);
+      padding: 1em 0;
+    }
+
+    .endpoint-detail {
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .detailed-text {
+      font-size: 0.75rem;
+      color: var(--text-low);
+      padding: 1em 0;
+    }
+
+    .text {
+      color: var(--text);
+      opacity: 1;
+    }
+
+    .center {
+      align-self: center;
+      justify-self: center;
+      margin: auto;
+    }
+
+    @media (max-width: 767px) {
+      .header {
+        padding: 1em;
+        height: 7em;
+      }
+
+      .head-title {
+        font-size: 0.9rem;
+        margin-top: 0.5em;
+      }
+
+      .head-description {
+        font-size: 0.75rem;
+        margin-top: 0.5em;
+      }
+
+      .main-container {
+        height: calc(100% - 7em);
+        padding: 0 1em 1em 1em;
+      }
+
+      .api-head {
+        padding: 0 1em;
+      }
+
+      .target {
+        font-size: 0.8rem;
+      }
+
+      .api-description {
+        font-size: 0.6rem;
+      }
+
+      .chevron {
+        height: 1em;
+      }
+
+      .main-container::-webkit-scrollbar {
+        width: 0;
+      }
+
+      .endpoint {
+        padding: 0 1em;
+      }
+
+      .methode p {
+        font-size: 0.5rem;
+      }
+
+      .route {
+        font-size: 0.55rem;
+        margin-left: 1em;
+      }
+
+      .endpoint-title {
+        font-size: 0.6rem;
+      }
+
+      .endpoint-detail {
+        font-size: 0.7rem;
+      }
+
+      .detailed-text {
+        font-size: 0.65rem;
+      }
+
+      .title {
+        display: none;
+      }
+    }
+
+    /* Code block styling */
+    .code-block {
+      background-color: var(--bgc);
+      border: 1px solid var(--border-low);
+      border-radius: 0.5rem;
+      padding: 1em;
+      margin: 0.5em 0;
+      font-size: 0.8rem;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-block code {
+      color: var(--text);
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Parameters table styling */
+    .params-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.5em 0;
+      font-size: 0.75rem;
+      border: 1px solid var(--border-low);
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .params-table thead {
+      background-color: var(--border-low);
+    }
+
+    .params-table th {
+      padding: 0.75em;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text);
+      border-right: 1px solid var(--border-low);
+    }
+
+    .params-table th:last-child {
+      border-right: none;
+    }
+
+    .params-table td {
+      padding: 0.75em;
+      border-right: 1px solid var(--border-low);
+      border-bottom: 1px solid var(--border-low);
+      color: var(--text);
+    }
+
+    .params-table td:last-child {
+      border-right: none;
+    }
+
+    .params-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .params-table code {
+      background-color: var(--trans-grey);
+      padding: 0.2em 0.4em;
+      border-radius: 0.2rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.3em 0.6em;
+      border-radius: 0.3rem;
+      font-size: 0.85em;
+      font-weight: 600;
+    }
+
+    .badge.required {
+      background-color: rgba(241, 80, 74, 0.2);
+      color: #F1504A;
+    }
+
+    .badge.optional {
+      background-color: rgba(117, 117, 117, 0.2);
+      color: var(--text-low);
+    }
+  </style>
+  <title>KroGi API Endpoints</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo-title">
+        <svg class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_2" data-name="Layer 2" viewBox="0 0 1080 1080">
+        <defs>
+            <style>
+            .cls-1 {
+                fill: #0b253f;
+            }
+
+            .cls-2 {
+                fill: url(#linear-gradient);
+            }
+            </style>
+            <linearGradient id="linear-gradient" x1="102.91" y1="563.99" x2="988.8" y2="563.99" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#0b253f"/>
+            <stop offset=".67" stop-color="#3dade2"/>
+            </linearGradient>
+        </defs>
+        <path class="cls-2" d="M988.77,204.81c.15.92-.43,1.53-.89,2.21-19.9,29.83-50.6,64.37-76.35,89.45-100.17,97.54-234.85,151.31-354.2,221.28-90.73,53.19-196.51,123.13-239.11,223.19-21.94,51.54-20.05,114.27,7.13,163.45,2.79,5.05,8.47,12.01,10.54,16.61.34.76.39,1.42.31,2.24h-175.73c-38.34-4.12-52.21-31.4-55.75-66.47-10.48-103.75,25.36-202.63,91.7-281.14,70.49-83.41,170.32-141.86,266.55-191.23,37.89-19.44,245.52-116.13,278.04-133.4,64-34,49-46,82.2-46.17,55.19-.28,110.39.16,165.57-.02ZM690.24,351.54l-55.78,24.4-.49,1.02c1.93,2.51,3.55,9.72,5.31,11.72.35.4.46.53,1.03.47.71-.07,5.23-2.16,6.43-2.65,15.86-6.49,31.39-15.04,47.12-21.92.5-.37,1.86-1.52,2.04-1.96.66-1.58-3.85-10.82-5.66-11.08ZM589.02,399.01c-.61-.53-1.33-.7-2.11-.49-19.86,8.47-39.59,17.74-58.53,28.08-2.53,2.33,3.82,11.67,5.59,13.02.62.47.81.51,1.58.43,2.29-.26,9.4-3.87,11.95-5.08,12.58-5.97,27.13-12.54,39.24-19.05,1.69-.91,8.05-4.25,8.09-6.03.02-.87-5.04-10.21-5.81-10.88ZM476.98,453.26c-2.22.45-9.59,4.68-12.12,6.02-8.19,4.33-16.89,9.42-24.9,14.14-4.36,2.57-23.27,13.17-24.82,16.52s5.54,11.79,8.02,14.03c11.26-5.27,21.57-12.67,32.29-19.03,10.2-6.06,20.83-11.4,30.78-17.89.8-.83.54-1.61.28-2.59-.41-1.51-5.96-10.49-7.12-11.02-.88-.41-1.48-.36-2.4-.18ZM359.79,526.23c-2.33.02-17.53,12.25-20.48,14.61-9,7.21-17.4,15-25.76,22.91-2.79,2.64-13.3,10.99-13.6,14.19-.38,4.08,9.07,10.13,12.46,11.88l1.1-.04c18.23-16.58,36.46-33.14,56.07-48.09.54-.62,1.03-1.31.98-2.18-.12-2.38-8.37-13.31-10.78-13.28ZM256.23,627.49c-1.23.37-3.73,3.85-4.6,5.04-10.1,13.78-21.42,33.42-28.55,48.96-1.13,2.46-4.57,10.16-4.64,12.39-.17,5.55,11.94,6.92,15.71,9.21.83.08,1.43-.77,1.88-1.32,4.54-5.55,10.04-21.03,14.05-28.38,2.33-4.28,5.22-8.96,7.78-13.15,3.51-5.73,11.46-15.44,13.68-20.85,1.38-3.36-2.34-6.93-5-8.84-2.08-1.49-7.88-3.78-10.3-3.06ZM201.33,752.53c-1.45.32-2.16,1.11-2.66,2.43-2.16,5.74-3.93,21.64-4.53,28.28-1.07,11.8-1.91,27.29-1.13,39.02.16,2.43.38,7.06,2.27,8.48,2.59,1.95,13.66,2.31,16.61.79,1.22-.63,2.37-2.27,2.58-3.64,1.33-8.42-.39-21.36.04-30.51.29-6.26,1.03-12.93,1.76-19.17.81-6.83,1.98-13.67,3.34-20.41-.62-4.6-14.68-6.08-18.28-5.28Z"/>
+        <path class="cls-1" d="M947.74,926.64c.3.03,4.18.64,3.11,1.69-1.15.18-2.23.64-3.36.89-6.74,1.45-16.38,1.83-23.52,2.51-100.13,9.58-199.46,10.48-299.95,8.46-3.68-.07-9.69-.47-13.07,0-1.86.25-2.06,1.47-3.37,1.72-5.82,1.13-25.94-1.34-32.75-2.33-.87-.13-5.24-.85-5.45-1.07-.95-1,.36-.95.8-1.17,4.49-2.28,8.5-3.84,12.21-7.59,25.15-25.42,25.28-106.22-4.01-128.36-29.73-22.48-47.27,28.11-48.65,49.71-1.9,29.72,5.49,63.8,27.19,85.16-51.68-9.21-103.35-18.56-154.96-28.11-9.17-1.7-25.71-1.92-31.8-8.95-35.97-41.48-43.89-100.45-25.49-151.61,14.63-40.68,52.18-86.15,96.21-95.05,48.36-9.77,63.21,5.44,85.01,44.61,3.66,6.57,13.27,23.15,14.49,29.65.83,4.4-4.45,10.62-7.24,13.99-.92,1.11-5.02,4.2-4.25,5.41.52.54,1.18.75,1.87.96,12.75,3.92,26.46,5.05,39.48,9.76,47.91,17.34,57.08,75.12,60.26,119.66.44,6.12-.03,13.22.57,19.23.11,1.09.7,3.61,1.53,4.28.92.74,7.6,2.71,8.95,2.81,3.16.23,4.16-1.64,5.55-1.57,1.88.09,6.85,1.79,9.73,2.12,48.85,5.64,102.52,6.1,151.66,5.07,44.93-.94,91.18-1.91,135.86-6.77,14.08-1.53,28.7-3.52,41.34-10.17.52-.78.24-1.49,0-2.28-.38-1.34-4.54-11.66-5.17-11.82-12.5,4.94-25.74,7.81-39.08,9.5-71.67,9.04-147.57,4.84-219.52,2.33-16.31.39-36.32-5.35-52.1-4.54-3.75.19-5.87.74-8.69,3.2-1.25,1.1-2.66,4.51-5.14,3.36-.58-.42-1.05-.82-1.03-1.61.02-1.28,3.87-10.31,4.71-12.26,4.04-9.45,9.11-18.55,13.39-27.91,2.97-6.49,2.07-10.19,10.35-12.29,4.96-1.26,8.4-.53,13.02-.52,27.05.05,53.97,3.52,80.94,4.53,2.28.09,5.14.14,7.39-.02.61-.04,1.89.31,1.4-.84-.8-1.87-8.46-9.2-10.45-11.05-17.93-16.68-27.12-19.65-51.05-23.65-7.67-1.28-30.09-5.91-36.25-5.61-2.35.11-2.27,1.63-6.23-.02-5.36-2.23-11.57-3.53-16.96-6.25-12.92-6.53-22.19-20-29.94-31.76l.6-1.13c4.53,1.46,9.4,1.13,14.09,1.75,36.78,4.84,70.27,16.79,105.63,26.23,27.41,7.32,63.96,6.6,92.56,7.05,28.61.45,61.04,1.05,89.22-4.11,11.02-2.02,13.15-4.03,18.1-14.15.62-1.26,1.99-3.16,1.54-4.52-.57-1.73-21.52-12.96-24.64-14.44-21.32-10.13-46.81-18.38-69.7-24.24-18.57-4.76-33.3-6.48-52.45-7.54-29.02-1.61-58.64-2.45-87.73-2.83-43.75-.57-87.03,2.75-130.79.61-27.44-1.34-30.96-9.04-44.64-30.05-10.84-16.66-20.49-36.6-38.25-46.92l.56-1.41c8.51-.89,17.17-.99,25.75-1.41,51.92-2.53,110.42-2.85,161.78,5.19,43.15,6.76,81.39,30.97,116.81,55.22,5.82,3.98,16.45,13.51,22.01,15.9,8.02,3.45,26.18,5.33,35.88,7.7,25.19,6.14,51.72,15.21,74.72,27.15,13.46,6.99,25.83,14.27,30.13,29.85,1.29,4.66.52,8.03-2.41,12.03s-7.73,6.35-11.19,9.75l-7.48,29c9.45-1.93,22.69-4.57,30.51-10.51,1.27-.96,7.67-8.52,8.54-7.59.34,5.17.34,10.37.57,15.55.51,11.34.32,22.03-.03,33.36-.22,7.14.43,17.6-.58,24.31-2.19,14.57-33.27,17.7-44.64,20.44-2.58,3.08-5.38,5.92-8.23,8.74-1.71,1.69-4.65,2.75-4.83,5.64,3.54.28,7.57-.38,11.04,0ZM382.74,716.06c-2.17-2.03-2.88-12.89-3.81-12.86-2.33,4.28-4.65,12.67.09,15.74,5,3.23,27.39,6.54,34.6,7.85,30.44,5.53,61.12,9.9,91.56,15.46l2.22-.6c1.67-3.23,11.51-11.97,11.56-14.97.05-3.37-7.49-17.1-10.12-19.83-7.55-7.85-22.58-6.32-32.48-4.72-8.32,1.35-16.81,3.06-19.44,12.25-.54,1.88-.35,7.02-2.21,7.34-1.25.22-5.1-.92-6.73-.99-16.49-.75-32.77-1.48-49.24-2.83-3.07-.25-14.09-.07-15.99-1.84ZM500.33,899.49l-123.95-23.76c2.49,5.86.69,13.52,1.69,18.95.12.64.19,1.15.93,1.33l53.15.06c21.11.75,42.22,3.46,63.34,4.57.64.03,6.38.4,4.83-1.15Z"/>
+        <path class="cls-1" d="M359.25,411.71c-73.56,42.19-143.85,92.05-195.35,160.28-4.64,6.15-8.48,13.26-13.91,18.62l-.6-4.78V180.18c2.17-18.23,14.36-34.41,33.68-35.92h142.67c17.38,1.24,29.91,13.73,33.59,30.35,1.46,77.99.2,156.12.65,234.16l-.73,2.95Z"/>
+        <path class="cls-1" d="M562.46,813.63c13.35-1.45,20.11,18.51,22.49,28.71,4.24,18.16,3.12,44.43-3.82,61.81-5.74,14.37-18.16,23.24-29.09,7.28-9.72-14.2-12.83-40.62-10.89-57.42,1.23-10.73,8.24-38.96,21.31-40.39Z"/>
+        </svg>
+        <p class="title">KriGo - API Endpoints</p>
+    </div>
+    <h1 class="head-title">APIs Documentation</h1>
+    <p class="head-description">Complete reference for all available API endpoints</p>
+  </div>
+  <div class="main-container" id="mainContainer">
+  </div>
+  <script>
+    const data = {
+      "data": [{
+          "name": "Authentication",
+          "description": "Authentication and authorization operations including login, registration, token management and account security.",
+          "endpoints": [{
+              "method": "POST",
+              "rout": "/api/v1/auth/register",
+              "description": "Register",
+              "detail": "Register endpoint. Used to perform register within the system.",
+              "auth": false,
+              "parameters": [],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/auth/login",
+              "description": "Login",
+              "detail": "Login endpoint. Used to perform login within the system.",
+              "auth": false,
+              "parameters": [],
+              "request": {
+                "email": "oulhadjoday@gmail.com",
+                "password": "123"
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/auth/refresh",
+              "description": "Refresh",
+              "detail": "Refresh endpoint. Used to perform refresh within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": {
+                "token": {
+                  "refreshToken": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/auth/logout",
+              "description": "Logout",
+              "detail": "Logout endpoint. Used to perform logout within the system.",
+              "auth": false,
+              "parameters": [],
+              "request": {
+                "token": {
+                  "refreshToken": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/auth/forgot-password",
+              "description": "Forgot Password",
+              "detail": "Forgot Password endpoint. Used to perform forgot password within the system.",
+              "auth": false,
+              "parameters": [],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/auth/reset-password",
+              "description": "Reset Password",
+              "detail": "Reset Password endpoint. Used to perform reset password within the system.",
+              "auth": false,
+              "parameters": [],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Vehicle & Search",
+          "description": "Vehicle discovery, search, filters, availability and comparison services.",
+          "endpoints": [{
+              "method": "GET",
+              "rout": "/api/v1/vehicles",
+              "description": "Retrieve All Available Vehicles",
+              "detail": "Retrieve All Available Vehicles endpoint. Used to perform retrieve all available vehicles within the system.",
+              "auth": false,
+              "parameters": [{
+                  "name": "search",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/vehicles/{VEHICLE_ID}",
+              "description": "Retrieve Specific Vehicle",
+              "detail": "Retrieve Specific Vehicle endpoint. Used to perform retrieve specific vehicle within the system.",
+              "auth": false,
+              "parameters": [{
+                "name": "VEHICLE_ID",
+                "type": "string",
+                "required": true,
+                "description": "path parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/vehicles/search",
+              "description": "Search Vehicles",
+              "detail": "Search Vehicles endpoint. Used to perform search vehicles within the system.",
+              "auth": false,
+              "parameters": [{
+                  "name": "keyword",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "pickupCity",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/vehicles/filter",
+              "description": "Filter Vehicles",
+              "detail": "Filter Vehicles endpoint. Used to perform filter vehicles within the system.",
+              "auth": false,
+              "parameters": [{
+                  "name": "category",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "brand",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "minPrice",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "maxPrice",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "transmission",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "fuelType",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "seats",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/vehicles/compare",
+              "description": "Compare Vehicles",
+              "detail": "Compare Vehicles endpoint. Used to perform compare vehicles within the system.",
+              "auth": false,
+              "parameters": [{
+                "name": "vehicles",
+                "type": "string",
+                "required": false,
+                "description": "query parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/vehicles/nearby",
+              "description": "Retrieve Nearby Vehicles",
+              "detail": "Retrieve Nearby Vehicles endpoint. Used to perform retrieve nearby vehicles within the system.",
+              "auth": false,
+              "parameters": [{
+                  "name": "lat",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "lng",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "radius",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/vehicles/categories",
+              "description": "Retrieve Vehicles Categories",
+              "detail": "Retrieve Vehicles Categories endpoint. Used to perform retrieve vehicles categories within the system.",
+              "auth": false,
+              "parameters": [],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/vehicles/brands",
+              "description": "Retrieve Vehicles Brands",
+              "detail": "Retrieve Vehicles Brands endpoint. Used to perform retrieve vehicles brands within the system.",
+              "auth": false,
+              "parameters": [],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/vehicles/{VEHICLE_ID}/availability",
+              "description": "Check Vehicle Availability",
+              "detail": "Check Vehicle Availability endpoint. Used to perform check vehicle availability within the system.",
+              "auth": false,
+              "parameters": [{
+                  "name": "VEHICLE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/vehicles/{VEHICLE_ID}/images",
+              "description": "Retrieve Vehicle Images",
+              "detail": "Retrieve Vehicle Images endpoint. Used to perform retrieve vehicle images within the system.",
+              "auth": false,
+              "parameters": [{
+                "name": "VEHICLE_ID",
+                "type": "string",
+                "required": true,
+                "description": "path parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Customer",
+          "description": "Customer profile, account settings and preferences management.",
+          "endpoints": [{
+              "method": "GET",
+              "rout": "/api/v1/customers/profile",
+              "description": "Retrieve Customer Profile",
+              "detail": "Retrieve Customer Profile endpoint. Used to perform retrieve customer profile within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PUT",
+              "rout": "/api/v1/customers/profile",
+              "description": "Update Customer Profile",
+              "detail": "Update Customer Profile endpoint. Used to perform update customer profile within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/customers/avatar",
+              "description": "Upload Customer Avatar",
+              "detail": "Upload Customer Avatar endpoint. Used to perform upload customer avatar within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PUT",
+              "rout": "/api/v1/customers/password",
+              "description": "Change Customer Password",
+              "detail": "Change Customer Password endpoint. Used to perform change customer password within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PUT",
+              "rout": "/api/v1/customers/preferences",
+              "description": "Update Customer Preferences",
+              "detail": "Update Customer Preferences endpoint. Used to perform update customer preferences within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/customers/preferences",
+              "description": "Retrieve Customer Preferences",
+              "detail": "Retrieve Customer Preferences endpoint. Used to perform retrieve customer preferences within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "DELETE",
+              "rout": "/api/v1/customers/account",
+              "description": "Deactivate/Delete Customer Account",
+              "detail": "Deactivate/Delete Customer Account endpoint. Used to perform deactivate/delete customer account within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Reservation",
+          "description": "Reservation lifecycle management including booking, updates, status tracking and invoices.",
+          "endpoints": [{
+              "method": "POST",
+              "rout": "/api/v1/reservations/",
+              "description": "Create Reservation",
+              "detail": "Create Reservation endpoint. Used to perform create reservation within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": {
+                "reservation": {
+                  "vehicleID": "",
+                  "pickupLocation": "",
+                  "returnLocation": "",
+                  "startDate": "",
+                  "endDate": "",
+                  "extras": []
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reservations/",
+              "description": "Retrieve Customer Reservations",
+              "detail": "Retrieve Customer Reservations endpoint. Used to perform retrieve customer reservations within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reservations/{RESERVATION_ID}",
+              "description": "Retrieve Reservation",
+              "detail": "Retrieve Reservation endpoint. Used to perform retrieve reservation within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "RESERVATION_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PUT",
+              "rout": "/api/v1/reservations/{RESERVATION_ID}",
+              "description": "Update Reservation",
+              "detail": "Update Reservation endpoint. Used to perform update reservation within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "RESERVATION_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "reservation": {
+                  "startDate": "",
+                  "endDate": "",
+                  "etras": []
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "DELETE",
+              "rout": "/api/v1/reservations/{RESERVATION_ID}",
+              "description": "Cancel Reservation",
+              "detail": "Cancel Reservation endpoint. Used to perform cancel reservation within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "RESERVATION_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/reservations/{RESERVATION_ID}/status",
+              "description": "Update Reservation Status",
+              "detail": "Update Reservation Status endpoint. Used to perform update reservation status within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "RESERVATION_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "reservation": {
+                  "status": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reservations/history",
+              "description": "Retrieve Reservations History",
+              "detail": "Retrieve Reservations History endpoint. Used to perform retrieve reservations history within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reservations/{RESERVATION_ID}/invoice",
+              "description": "Retrieve Reservation Invoice",
+              "detail": "Retrieve Reservation Invoice endpoint. Used to perform retrieve reservation invoice within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "RESERVATION_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Verification API",
+          "description": "Verification API operations",
+          "endpoints": [{
+              "method": "GET",
+              "rout": "/api/v1/admin/verifications/statistics",
+              "description": "Retrieve Verifications Statistics",
+              "detail": "Retrieve Verifications Statistics endpoint. Used to perform retrieve verifications statistics within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/verifications/history",
+              "description": "Retrieve Verifications History",
+              "detail": "Retrieve Verifications History endpoint. Used to perform retrieve verifications history within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/verifications/pending",
+              "description": "Retrieve Pending Verifications",
+              "detail": "Retrieve Pending Verifications endpoint. Used to perform retrieve pending verifications within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/verifications/{VERIFICATION_ID}/request-info",
+              "description": "Request Verification Infos",
+              "detail": "Request Verification Infos endpoint. Used to perform request verification infos within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VERIFICATION_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "request": {
+                  "docType": "",
+                  "description": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/admin/verifications/{VERIFICATION_ID}/reject",
+              "description": "Reject Verification Request",
+              "detail": "Reject Verification Request endpoint. Used to perform reject verification request within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VERIFICATION_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/admin/verifications/{VERIFICATION_ID}/approve",
+              "description": "Approve Verification Request",
+              "detail": "Approve Verification Request endpoint. Used to perform approve verification request within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VERIFICATION_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/verifications/{VERIFICATION_ID}",
+              "description": "Retrieve Verification Request",
+              "detail": "Retrieve Verification Request endpoint. Used to perform retrieve verification request within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VERIFICATION_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/verifications",
+              "description": "Retrieve All Verification Requests",
+              "detail": "Retrieve All Verification Requests endpoint. Used to perform retrieve all verification requests within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "search",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Moderation API",
+          "description": "Moderation API operations",
+          "endpoints": [{
+              "method": "PATCH",
+              "rout": "/api/v1/admin/moderation/reports/{REPORT_ID}/reject",
+              "description": "Reject Reported Content",
+              "detail": "Reject Reported Content endpoint. Used to perform reject reported content within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "REPORT_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/admin/moderation/reports/{REPORT_ID}/approve",
+              "description": "Approve Reported Content",
+              "detail": "Approve Reported Content endpoint. Used to perform approve reported content within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "REPORT_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/moderation/reports/{REPORT_ID}",
+              "description": "Retrieve Report",
+              "detail": "Retrieve Report endpoint. Used to perform retrieve report within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "REPORT_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/moderation/reports",
+              "description": "Retrieve Reported Content",
+              "detail": "Retrieve Reported Content endpoint. Used to perform retrieve reported content within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "contentType",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/moderation/reviews",
+              "description": "Retrieve Customers Reviews",
+              "detail": "Retrieve Customers Reviews endpoint. Used to perform retrieve customers reviews within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "search",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "DELETE",
+              "rout": "/api/v1/admin/moderation/reviews/{REVIEW_ID}",
+              "description": "Remove Review",
+              "detail": "Remove Review endpoint. Used to perform remove review within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "REVIEW_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/admin/moderation/users/{USER_ID}/suspend",
+              "description": "Suspend User",
+              "detail": "Suspend User endpoint. Used to perform suspend user within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "USER_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/moderation/statistics",
+              "description": "Retrieve Moderation Statistics",
+              "detail": "Retrieve Moderation Statistics endpoint. Used to perform retrieve moderation statistics within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/admin/moderation/users/{USER_ID}/warnings",
+              "description": "Issue User Warning",
+              "detail": "Issue User Warning endpoint. Used to perform issue user warning within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "USER_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "warning": {
+                  "userId": "",
+                  "type": "",
+                  "content": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Dispute Management API",
+          "description": "Dispute Management API operations",
+          "endpoints": [{
+              "method": "GET",
+              "rout": "/api/v1/admin/disputs",
+              "description": "Retrieve All Disputes",
+              "detail": "Retrieve All Disputes endpoint. Used to perform retrieve all disputes within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "type",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "priority",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/disputs/{DISPUTE_ID}",
+              "description": "Retrieve Dispute",
+              "detail": "Retrieve Dispute endpoint. Used to perform retrieve dispute within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "DISPUTE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/admin/disputs/{DISPUTE_ID}/assign",
+              "description": "Assign Dispute",
+              "detail": "Assign Dispute endpoint. Used to perform assign dispute within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "DISPUTE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "dispute": {
+                  "assignedTo": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/admin/disputs/{DISPUTE_ID}/resolve",
+              "description": "Resolve Dispute",
+              "detail": "Resolve Dispute endpoint. Used to perform resolve dispute within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "DISPUTE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/admin/disputs/{DISPUTE_ID}/close",
+              "description": "Close Dispute",
+              "detail": "Close Dispute endpoint. Used to perform close dispute within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "DISPUTE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/admin/disputs/{DISPUTE_ID}/comment",
+              "description": "Add Dispute Comment",
+              "detail": "Add Dispute Comment endpoint. Used to perform add dispute comment within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "DISPUTE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/disputes/statistics",
+              "description": "Retrieve Disputes Statistics",
+              "detail": "Retrieve Disputes Statistics endpoint. Used to perform retrieve disputes statistics within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/disputes/history",
+              "description": "Retrieve Disputes History",
+              "detail": "Retrieve Disputes History endpoint. Used to perform retrieve disputes history within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "User Management",
+          "description": "Administrative user account management.",
+          "endpoints": [{
+              "method": "PATCH",
+              "rout": "/api/v1/admin/users/{USER_ID}/role",
+              "description": "Update User Role",
+              "detail": "Update User Role endpoint. Used to perform update user role within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "USER_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "user": {
+                  "role": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/users/search",
+              "description": "Search User",
+              "detail": "Search User endpoint. Used to perform search user within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "name",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "role",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "email",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "phone",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/users/statistics",
+              "description": "Retrieve Users Statistics",
+              "detail": "Retrieve Users Statistics endpoint. Used to perform retrieve users statistics within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/admin/users/{USER_ID}/reset-password",
+              "description": "Reset User Password",
+              "detail": "Reset User Password endpoint. Used to perform reset user password within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "USER_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "user": {
+                  "password": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/admin/users/{USER_ID}/status",
+              "description": "Activate / Disactivate User",
+              "detail": "Activate / Disactivate User endpoint. Used to perform activate / disactivate user within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "USER_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "user": {
+                  "status": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "DELETE",
+              "rout": "/api/v1/admin/users/{USER_ID}",
+              "description": "Remove User",
+              "detail": "Remove User endpoint. Used to perform remove user within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "USER_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PUT",
+              "rout": "/api/v1/admin/users/{USER_ID}",
+              "description": "Update User",
+              "detail": "Update User endpoint. Used to perform update user within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "USER_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "user": {
+                  "firstname": "",
+                  "lastname": "",
+                  "phone": "",
+                  "email": "",
+                  "address": {
+                    "country": "",
+                    "state": "",
+                    "city": "",
+                    "street": "",
+                    "postalCode": ""
+                  },
+                  "role": "",
+                  "status": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/users/{USER_ID}",
+              "description": "Retrieve User",
+              "detail": "Retrieve User endpoint. Used to perform retrieve user within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "USER_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/admin/users",
+              "description": "Retrieve All Users",
+              "detail": "Retrieve All Users endpoint. Used to perform retrieve all users within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "search",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Branch Management",
+          "description": "Agency branch management and operational configuration.",
+          "endpoints": [{
+              "method": "POST",
+              "rout": "/api/v1/branches/",
+              "description": "Create Branch",
+              "detail": "Create Branch endpoint. Used to perform create branch within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": {
+                "branch": {
+                  "name": "",
+                  "code": "",
+                  "phone": "",
+                  "email": "",
+                  "address": {
+                    "country": "",
+                    "state": "",
+                    "city": "",
+                    "postalCode": "",
+                    "street": "",
+                    "latitude": 0,
+                    "longitude": 0
+                  },
+                  "operatingHours": {
+                    "sunday": {
+                      "open": "",
+                      "close": ""
+                    }
+                  },
+                  "status": "",
+                  "description": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/branches",
+              "description": "Retrieve All Branches",
+              "detail": "Retrieve All Branches endpoint. Used to perform retrieve all branches within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "search",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/branches/{BRANCH_ID}/status",
+              "description": "Active / Disactive Branch",
+              "detail": "Active / Disactive Branch endpoint. Used to perform active / disactive branch within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "BRANCH_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "branch": {
+                  "status": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/branches/{BRANCH_ID}/employees",
+              "description": "Retrieve Branch Employees",
+              "detail": "Retrieve Branch Employees endpoint. Used to perform retrieve branch employees within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "BRANCH_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "search",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/branches/{BRANCH_ID}/operating-hours",
+              "description": "Update Branch Operating Hours",
+              "detail": "Update Branch Operating Hours endpoint. Used to perform update branch operating hours within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "BRANCH_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "branch": {
+                  "operatingHours": {
+                    "sunday": {
+                      "open": "",
+                      "close": ""
+                    }
+                  }
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/branches/{BRANCH_ID}/vehicles",
+              "description": "Retrieve Branch Vehicles",
+              "detail": "Retrieve Branch Vehicles endpoint. Used to perform retrieve branch vehicles within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "BRANCH_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "search",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PUT",
+              "rout": "/api/v1/branches/{BRANCH_ID}",
+              "description": "Update Branch",
+              "detail": "Update Branch endpoint. Used to perform update branch within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "BRANCH_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "branch": {
+                  "name": "",
+                  "code": "",
+                  "phone": "",
+                  "email": "",
+                  "address": {
+                    "country": "",
+                    "state": "",
+                    "city": "",
+                    "postalCode": "",
+                    "street": "",
+                    "latitude": 0,
+                    "longitude": 0
+                  },
+                  "operatingHours": {
+                    "sunday": {
+                      "open": "",
+                      "close": ""
+                    }
+                  },
+                  "status": "",
+                  "description": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "DELETE",
+              "rout": "/api/v1/branches/{BRANCH_ID}",
+              "description": "Remove Branch",
+              "detail": "Remove Branch endpoint. Used to perform remove branch within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "BRANCH_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/branches/{BRANCH_ID}",
+              "description": "Retrieve Branch",
+              "detail": "Retrieve Branch endpoint. Used to perform retrieve branch within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "BRANCH_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Fleet Management",
+          "description": "Rental fleet inventory management and vehicle operations.",
+          "endpoints": [{
+              "method": "GET",
+              "rout": "/api/v1/fleet/vehicles",
+              "description": "Retrieve Fleet Vehicles",
+              "detail": "Retrieve Fleet Vehicles endpoint. Used to perform retrieve fleet vehicles within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "brand",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "category",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "createdAt",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "orderby",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/fleet/vehicles",
+              "description": "Add Fleet Vehicle",
+              "detail": "Add Fleet Vehicle endpoint. Used to perform add fleet vehicle within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": {
+                "vehicle": {
+                  "make": "",
+                  "model": "",
+                  "category": "",
+                  "transmission": "",
+                  "fuelType": "",
+                  "seats": "",
+                  "color": "",
+                  "year": "",
+                  "licencePlate": "",
+                  "dailyPrice": "",
+                  "weeklyPrice": "",
+                  "monthlyPrice": "",
+                  "description": "",
+                  "status": "",
+                  "features": "",
+                  "images": []
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/fleet/vehicles/{VEHICLE_ID}",
+              "description": "Retrieve Fleet Vehicle",
+              "detail": "Retrieve Fleet Vehicle endpoint. Used to perform retrieve fleet vehicle within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VEHICLE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PUT",
+              "rout": "/api/v1/fleet/vehicles/{VEHICLE_ID}",
+              "description": "Update Fleet Vehicle",
+              "detail": "Update Fleet Vehicle endpoint. Used to perform update fleet vehicle within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VEHICLE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "vehicle": {
+                  "make": "",
+                  "model": "",
+                  "category": "",
+                  "transmission": "",
+                  "fuelType": "",
+                  "seats": "",
+                  "color": "",
+                  "year": "",
+                  "licencePlate": "",
+                  "dailyPrice": "",
+                  "weeklyPrice": "",
+                  "monthlyPrice": "",
+                  "description": "",
+                  "status": "",
+                  "features": "",
+                  "images": []
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "DELETE",
+              "rout": "/api/v1/fleet/vehicles/{VEHICLE_ID}",
+              "description": "Remove Fleet Vehicle",
+              "detail": "Remove Fleet Vehicle endpoint. Used to perform remove fleet vehicle within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VEHICLE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/fleet/vehicles/{VEHICLE_ID}/availability",
+              "description": "Update Fleet Vehicle Availability",
+              "detail": "Update Fleet Vehicle Availability endpoint. Used to perform update fleet vehicle availability within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VEHICLE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "vehicle": {
+                  "status": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/fleet/vehicles/{VEHICLE_ID}/price",
+              "description": "Update Fleet Vehicle Price",
+              "detail": "Update Fleet Vehicle Price endpoint. Used to perform update fleet vehicle price within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VEHICLE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "vehicle": {
+                  "dailyPrice": "",
+                  "weeklyPrice": "",
+                  "monthlyPrice": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/fleet/vehicles/{VEHICLE_ID}/images",
+              "description": "Upload Fleet Vehicle Images",
+              "detail": "Upload Fleet Vehicle Images endpoint. Used to perform upload fleet vehicle images within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VEHICLE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "DELETE",
+              "rout": "/api/v1/fleet/vehicles/{VEHICLE_ID}/images/{IMAGE_ID}",
+              "description": "Delete Fleet Vehicle Image",
+              "detail": "Delete Fleet Vehicle Image endpoint. Used to perform delete fleet vehicle image within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "VEHICLE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "IMAGE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/fleet/statistics",
+              "description": "Retrieve Fleet Statistics",
+              "detail": "Retrieve Fleet Statistics endpoint. Used to perform retrieve fleet statistics within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Reporting",
+          "description": "Business reports, statistics and analytics endpoints.",
+          "endpoints": [{
+              "method": "GET",
+              "rout": "/api/v1/reports/summary",
+              "description": "Generate Summary",
+              "detail": "Generate Summary endpoint. Used to perform generate summary within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "branch",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "groupby",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reports/branches",
+              "description": "Generate Branches Report",
+              "detail": "Generate Branches Report endpoint. Used to perform generate branches report within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "branch",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "groupby",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reports/customers",
+              "description": "Generate Customers Report",
+              "detail": "Generate Customers Report endpoint. Used to perform generate customers report within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "branch",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "groupby",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reports/vehicles",
+              "description": "Generate Vehicles Report",
+              "detail": "Generate Vehicles Report endpoint. Used to perform generate vehicles report within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "branch",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "groupby",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reports/fleet",
+              "description": "Generate Fleet Report",
+              "detail": "Generate Fleet Report endpoint. Used to perform generate fleet report within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "branch",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "groupby",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reports/reservations",
+              "description": "Generate Reservations Report",
+              "detail": "Generate Reservations Report endpoint. Used to perform generate reservations report within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "branch",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "groupby",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reports/revenue",
+              "description": "Generate Revenue Report",
+              "detail": "Generate Revenue Report endpoint. Used to perform generate revenue report within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "branch",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "groupby",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/reports/dashboard",
+              "description": "Retrieve Dashboard",
+              "detail": "Retrieve Dashboard endpoint. Used to perform retrieve dashboard within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "startDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "endDate",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "branch",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "groupby",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/reports/export",
+              "description": "Export Report",
+              "detail": "Export Report endpoint. Used to perform export report within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": {
+                "report": {
+                  "reportType": "",
+                  "format": "",
+                  "parameters": {
+                    "startDate": "",
+                    "endDate": "",
+                    "branch": ""
+                  },
+                  "fileName": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Employee Management",
+          "description": "Employee administration, permissions and role management.",
+          "endpoints": [{
+              "method": "DELETE",
+              "rout": "/api/v1/employees/{EMPLOYEE_ID}",
+              "description": "Remove Employee",
+              "detail": "Remove Employee endpoint. Used to perform remove employee within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "EMPLOYEE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PUT",
+              "rout": "/api/v1/employees/{EMPLOYEE_ID}",
+              "description": "Update Employee",
+              "detail": "Update Employee endpoint. Used to perform update employee within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "EMPLOYEE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "employee": {
+                  "firstname": "",
+                  "lastname": "",
+                  "email": "",
+                  "phone": "",
+                  "role": "",
+                  "branchID": 0,
+                  "jobTitle": "",
+                  "hireDate": "",
+                  "status": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/employees/{EMPLOYEE_ID}",
+              "description": "Retrieve Employee",
+              "detail": "Retrieve Employee endpoint. Used to perform retrieve employee within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "EMPLOYEE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/employees/{EMPLOYEE_ID}/role",
+              "description": "Update Employee Role",
+              "detail": "Update Employee Role endpoint. Used to perform update employee role within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "EMPLOYEE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "employee": {
+                  "role": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/employees/roles",
+              "description": "Retrieve All Employees Roles",
+              "detail": "Retrieve All Employees Roles endpoint. Used to perform retrieve all employees roles within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "search",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "PATCH",
+              "rout": "/api/v1/employees/{EMPLOYEE_ID}/status",
+              "description": "Active / Disactive Employee",
+              "detail": "Active / Disactive Employee endpoint. Used to perform active / disactive employee within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "EMPLOYEE_ID",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": {
+                "employee": {
+                  "status": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/employees",
+              "description": "Retrieve All Employees",
+              "detail": "Retrieve All Employees endpoint. Used to perform retrieve all employees within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "search",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "limit",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "offset",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "page",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "order",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "sort",
+                  "type": "string",
+                  "required": false,
+                  "description": "query parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/employees/",
+              "description": "Add Employee",
+              "detail": "Add Employee endpoint. Used to perform add employee within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": {
+                "employee": {
+                  "firstname": "",
+                  "lastname": "",
+                  "email": "",
+                  "phone": "",
+                  "role": "",
+                  "branchID": 0,
+                  "jobTitle": "",
+                  "hireDate": "",
+                  "status": ""
+                }
+              },
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Notification API",
+          "description": "Notification API operations",
+          "endpoints": [{
+              "method": "POST",
+              "rout": "/api/v1/integrations/notifications/send",
+              "description": "Send Notification",
+              "detail": "Send Notification endpoint. Used to perform send notification within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/notifications/email",
+              "description": "Send Email Notification",
+              "detail": "Send Email Notification endpoint. Used to perform send email notification within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/notifications/sms",
+              "description": "Send SMS Notification",
+              "detail": "Send SMS Notification endpoint. Used to perform send sms notification within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/notifications/push",
+              "description": "Send Push Notification",
+              "detail": "Send Push Notification endpoint. Used to perform send push notification within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/notifications/history",
+              "description": "Retrieve Notification History",
+              "detail": "Retrieve Notification History endpoint. Used to perform retrieve notification history within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/notifications/{notificationId}",
+              "description": "Retrieve Notification Details",
+              "detail": "Retrieve Notification Details endpoint. Used to perform retrieve notification details within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "notificationId",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/notifications/status/{notificationId}",
+              "description": "Retrieve Notification Delivery Status",
+              "detail": "Retrieve Notification Delivery Status endpoint. Used to perform retrieve notification delivery status within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "notificationId",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/notifications/webhook",
+              "description": "Notification Webhook",
+              "detail": "Notification Webhook endpoint. Used to perform notification webhook within the system.",
+              "auth": false,
+              "parameters": [],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "AI Service API",
+          "description": "AI Service API operations",
+          "endpoints": [{
+              "method": "POST",
+              "rout": "/api/v1/integrations/ai/recommendations",
+              "description": "Generate Vehicle Recommendations",
+              "detail": "Generate Vehicle Recommendations endpoint. Used to perform generate vehicle recommendations within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/ai/search",
+              "description": "AI-Powered Vehicle Search",
+              "detail": "AI-Powered Vehicle Search endpoint. Used to perform ai-powered vehicle search within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/ai/chat",
+              "description": "Process Chatbot Request",
+              "detail": "Process Chatbot Request endpoint. Used to perform process chatbot request within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/ai/demand-forecast",
+              "description": "Retrieve Demand Forecast",
+              "detail": "Retrieve Demand Forecast endpoint. Used to perform retrieve demand forecast within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/ai/pricing",
+              "description": "Generate Pricing Recommendations",
+              "detail": "Generate Pricing Recommendations endpoint. Used to perform generate pricing recommendations within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/ai/sentiment",
+              "description": "Analyze Sentiment",
+              "detail": "Analyze Sentiment endpoint. Used to perform analyze sentiment within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/ai/insights",
+              "description": "Retrieve AI Insights",
+              "detail": "Retrieve AI Insights endpoint. Used to perform retrieve ai insights within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/ai/model-status",
+              "description": "Retrieve AI Model Status",
+              "detail": "Retrieve AI Model Status endpoint. Used to perform retrieve ai model status within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Maps Service API",
+          "description": "Maps Service API operations",
+          "endpoints": [{
+              "method": "POST",
+              "rout": "/api/v1/integrations/maps/geocode",
+              "description": "Geocode Address",
+              "detail": "Geocode Address endpoint. Used to perform geocode address within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/maps/reverse-geocode",
+              "description": "Reverse Geocode",
+              "detail": "Reverse Geocode endpoint. Used to perform reverse geocode within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/maps/nearby-branches",
+              "description": "Retrieve Nearby Branches",
+              "detail": "Retrieve Nearby Branches endpoint. Used to perform retrieve nearby branches within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/maps/directions",
+              "description": "Get Directions",
+              "detail": "Get Directions endpoint. Used to perform get directions within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/maps/distance",
+              "description": "Calculate Distance",
+              "detail": "Calculate Distance endpoint. Used to perform calculate distance within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/maps/place-search",
+              "description": "Place Search",
+              "detail": "Place Search endpoint. Used to perform place search within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/maps/autocomplete",
+              "description": "Address Autocomplete",
+              "detail": "Address Autocomplete endpoint. Used to perform address autocomplete within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/maps/static-map",
+              "description": "Generate Static Map",
+              "detail": "Generate Static Map endpoint. Used to perform generate static map within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Payment Integration",
+          "description": "Payment processing and transaction integration services.",
+          "endpoints": [{
+              "method": "POST",
+              "rout": "/api/v1/integrations/payments/",
+              "description": "Create Payment",
+              "detail": "Create Payment endpoint. Used to perform create payment within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/payments/{paymentId}",
+              "description": "Retrieve Payment Details",
+              "detail": "Retrieve Payment Details endpoint. Used to perform retrieve payment details within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "paymentId",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/payments/{paymentId}/status",
+              "description": "Retrieve Payment Status",
+              "detail": "Retrieve Payment Status endpoint. Used to perform retrieve payment status within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "paymentId",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/payments/{paymentId}/confirm",
+              "description": "Confirm Payment",
+              "detail": "Confirm Payment endpoint. Used to perform confirm payment within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "paymentId",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/payments/{paymentId}/cancel",
+              "description": "Cancel Payment",
+              "detail": "Cancel Payment endpoint. Used to perform cancel payment within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "paymentId",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/payments/{paymentId}/refund",
+              "description": "Process Payment Refund",
+              "detail": "Process Payment Refund endpoint. Used to perform process payment refund within the system.",
+              "auth": true,
+              "parameters": [{
+                  "name": "paymentId",
+                  "type": "string",
+                  "required": true,
+                  "description": "path parameter"
+                },
+                {
+                  "name": "Authorization",
+                  "type": "string",
+                  "required": false,
+                  "description": "header parameter"
+                }
+              ],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "POST",
+              "rout": "/api/v1/integrations/payments/webhook",
+              "description": "Payment Webhook",
+              "detail": "Payment Webhook endpoint. Used to perform payment webhook within the system.",
+              "auth": false,
+              "parameters": [],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            },
+            {
+              "method": "GET",
+              "rout": "/api/v1/integrations/payments/history",
+              "description": "Retrieve Payment History",
+              "detail": "Retrieve Payment History endpoint. Used to perform retrieve payment history within the system.",
+              "auth": true,
+              "parameters": [{
+                "name": "Authorization",
+                "type": "string",
+                "required": false,
+                "description": "header parameter"
+              }],
+              "request": null,
+              "response": {
+                "success": true,
+                "message": "Operation completed successfully"
+              }
+            }
+          ]
+        }
+      ]
+    }
+    const container = document.getElementById('mainContainer');
+
+    const expendContainer = (apiContainer) => {
+      var counter = 0;
+      var activeCounter = 0;
+      apiContainer.children[1].childNodes.forEach(child => {
+        counter++;
+        activeCounter = child.classList.contains("expanded") ? activeCounter + 1 : activeCounter;
+      })
+      apiContainer.style.height = `${4+(4.5 * counter - activeCounter) + 9.5 * activeCounter}em`
+    }
+
+    data.data.forEach(api => {
+      const apiContainer = document.createElement('div');
+      apiContainer.className = "api";
+      const apiHead = document.createElement('div');
+      apiHead.className = "api-head";
+      apiHead.addEventListener('click', () => {
+        const chevron = apiHead.children[2];
+        if (chevron.classList.contains('active')) {
+          chevron.classList.remove('active');
+        } else {
+          chevron.classList.add('active');
+        }
+        if (apiContainer.classList.contains('api-expended')) {
+          apiContainer.style.height = "4em"
+          apiContainer.classList.remove('api-expended');
+        } else {
+          apiContainer.classList.add('api-expended');
+          expendContainer(apiContainer)
+        }
+      })
+      apiHead.innerHTML =
+        `
+                    <h3 class="target">${api.name}</h3>
+                    <p class="api-description">${api.description}</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="chevron">
+                        <path d="M297.4 169.4C309.9 156.9 330.2 156.9 342.7 169.4L534.7 361.4C547.2 373.9 547.2 394.2 534.7 406.7C522.2 419.2 501.9 419.2 489.4 406.7L320 237.3L150.6 406.6C138.1 419.1 117.8 419.1 105.3 406.6C92.8 394.1 92.8 373.8 105.3 361.3L297.3 169.3z"/>
+                    </svg>
+                `;
+      apiContainer.appendChild(apiHead);
+
+      const endpointsContainer = document.createElement('div');
+      endpointsContainer.className = 'endpoints';
+
+      api.endpoints.forEach(endpoint => {
+        const endpointContainer = document.createElement('div');
+        endpointContainer.className = 'endpoint';
+        endpointContainer.addEventListener('click', () => {
+          if (endpointContainer.classList.contains('expanded')) {
+            endpointContainer.classList.remove('expanded');
+          } else {
+            endpointContainer.classList.add('expanded');
+          }
+          const chevron = endpointContainer.children[0].children[2].children[endpointContainer.children[0].children[2].children.length - 1];
+          if (chevron.classList.contains('active')) {
+            chevron.classList.remove('active');
+          } else {
+            chevron.classList.add('active');
+          }
+          const apiContainer = endpointContainer.parentElement.parentElement
+          expendContainer(apiContainer)
+        })
+        endpointContainer.innerHTML = `
+                    <div class="endpoint-head">
+                        <div class="flex-row">
+                            <div class="methode m-${endpoint.method.toLowerCase()}">
+                                <p>${endpoint.method.toUpperCase()}</p>
+                            </div>
+                            <p class="route">${endpoint.rout}</p>
+                        </div>
+                        <p class="endpoint-title">${endpoint.description}</p>
+                        <div class="flex-row">
+                            ${endpoint.auth?'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="lock"><path d="M256 160L256 224L384 224L384 160C384 124.7 355.3 96 320 96C284.7 96 256 124.7 256 160zM192 224L192 160C192 89.3 249.3 32 320 32C390.7 32 448 89.3 448 160L448 224C483.3 224 512 252.7 512 288L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 288C128 252.7 156.7 224 192 224z"/></svg>':""}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="chevron">
+                                <path d="M297.4 169.4C309.9 156.9 330.2 156.9 342.7 169.4L534.7 361.4C547.2 373.9 547.2 394.2 534.7 406.7C522.2 419.2 501.9 419.2 489.4 406.7L320 237.3L150.6 406.6C138.1 419.1 117.8 419.1 105.3 406.6C92.8 394.1 92.8 373.8 105.3 361.3L297.3 169.3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="endpoint-body">
+                        <h3 class="endpoint-detail">Endpoint details</h3>
+                        <p class="detailed-text">${endpoint.detail}</p>
+                        <div class="flex-row">
+                            <p class="detailed-text">Method: <span class="text">${endpoint.method.toUpperCase()}</span></p>
+                            <p class="detailed-text center">Authentification: <span class="text">${endpoint.auth?"Required":"Not Required"}</span></p>
+                        </div>
+                        ${endpoint.parameters && endpoint.parameters.length > 0 ? `
+                            <h4 class="endpoint-detail" style="margin-top: 1em;">Parameters</h4>
+                            <table class="params-table">
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Type</th>
+                                        <th>Required</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${endpoint.parameters.map(param => `
+                                        <tr>
+                                            <td><code>${param.name}</code></td>
+                                            <td><code>${param.type}</code></td>
+                                            <td>${param.required ? '<span class="badge required">Yes</span>' : '<span class="badge optional">No</span>'}</td>
+                                            <td>${param.description}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        ` : ''}
+                        ${endpoint.request ? `
+                            <h4 class="endpoint-detail" style="margin-top: 1em;">Request Example</h4>
+                            <pre class="code-block"><code>${JSON.stringify(endpoint.request, null, 2)}</code></pre>
+                        ` : ''}
+                        ${endpoint.response ? `
+                            <h4 class="endpoint-detail" style="margin-top: 1em;">Response Example</h4>
+                            <pre class="code-block"><code>${JSON.stringify(endpoint.response, null, 2)}</code></pre>
+                        ` : ''}
+                    </div>
+                `;
+
+        endpointsContainer.appendChild(endpointContainer);
+      })
+      apiContainer.appendChild(endpointsContainer);
+      container.appendChild(apiContainer);
+    });
+  </script>
+</body>
+
+</html>

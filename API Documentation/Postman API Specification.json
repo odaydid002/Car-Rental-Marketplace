@@ -1,0 +1,5285 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "KriGo",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "{{URL}}"
+    }
+  ],
+  "paths": {
+    "/api/v1/integrations/payments/": {
+      "post": {
+        "summary": "Create Payment",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Payment Integration Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/payments/{paymentId}": {
+      "get": {
+        "summary": "Retrieve Payment Details",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Payment Integration Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "paymentId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{paymentId}}"
+        }
+      ]
+    },
+    "/api/v1/integrations/payments/{paymentId}/status": {
+      "get": {
+        "summary": "Retrieve Payment Status",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Payment Integration Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "paymentId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{paymentId}}"
+        }
+      ]
+    },
+    "/api/v1/integrations/payments/{paymentId}/confirm": {
+      "post": {
+        "summary": "Confirm Payment",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Payment Integration Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "paymentId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{paymentId}}"
+        }
+      ]
+    },
+    "/api/v1/integrations/payments/{paymentId}/cancel": {
+      "post": {
+        "summary": "Cancel Payment",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Payment Integration Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "paymentId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{paymentId}}"
+        }
+      ]
+    },
+    "/api/v1/integrations/payments/{paymentId}/refund": {
+      "post": {
+        "summary": "Process Payment Refund",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Payment Integration Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "paymentId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{paymentId}}"
+        }
+      ]
+    },
+    "/api/v1/integrations/payments/webhook": {
+      "post": {
+        "summary": "Payment Webhook",
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Payment Integration Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/payments/history": {
+      "get": {
+        "summary": "Retrieve Payment History",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Payment Integration Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/maps/geocode": {
+      "post": {
+        "summary": "Geocode Address",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Maps Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/maps/reverse-geocode": {
+      "post": {
+        "summary": "Reverse Geocode",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Maps Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/maps/nearby-branches": {
+      "get": {
+        "summary": "Retrieve Nearby Branches",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Maps Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/maps/directions": {
+      "get": {
+        "summary": "Get Directions",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Maps Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/maps/distance": {
+      "get": {
+        "summary": "Calculate Distance",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Maps Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/maps/place-search": {
+      "get": {
+        "summary": "Place Search",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Maps Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/maps/autocomplete": {
+      "get": {
+        "summary": "Address Autocomplete",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Maps Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/maps/static-map": {
+      "get": {
+        "summary": "Generate Static Map",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Maps Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/ai/recommendations": {
+      "post": {
+        "summary": "Generate Vehicle Recommendations",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "AI Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/ai/search": {
+      "post": {
+        "summary": "AI-Powered Vehicle Search",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "AI Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/ai/chat": {
+      "post": {
+        "summary": "Process Chatbot Request",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "AI Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/ai/demand-forecast": {
+      "get": {
+        "summary": "Retrieve Demand Forecast",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "AI Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/ai/pricing": {
+      "get": {
+        "summary": "Generate Pricing Recommendations",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "AI Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/ai/sentiment": {
+      "post": {
+        "summary": "Analyze Sentiment",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "AI Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/ai/insights": {
+      "get": {
+        "summary": "Retrieve AI Insights",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "AI Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/ai/model-status": {
+      "get": {
+        "summary": "Retrieve AI Model Status",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "AI Service API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/notifications/send": {
+      "post": {
+        "summary": "Send Notification",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Notification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/notifications/email": {
+      "post": {
+        "summary": "Send Email Notification",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Notification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/notifications/sms": {
+      "post": {
+        "summary": "Send SMS Notification",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Notification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/notifications/push": {
+      "post": {
+        "summary": "Send Push Notification",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Notification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/notifications/history": {
+      "get": {
+        "summary": "Retrieve Notification History",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Notification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/integrations/notifications/{notificationId}": {
+      "get": {
+        "summary": "Retrieve Notification Details",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Notification API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "notificationId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{notificationId}}"
+        }
+      ]
+    },
+    "/api/v1/integrations/notifications/status/{notificationId}": {
+      "get": {
+        "summary": "Retrieve Notification Delivery Status",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Notification API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "notificationId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{notificationId}}"
+        }
+      ]
+    },
+    "/api/v1/integrations/notifications/webhook": {
+      "post": {
+        "summary": "Notification Webhook",
+        "responses": {},
+        "tags": [
+          "Integration API",
+          "Notification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/employees/{EMPLOYEE_ID}": {
+      "delete": {
+        "summary": "Remove Employee",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Employee Management Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "EMPLOYEE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{EMPLOYEE_ID}}"
+        }
+      ],
+      "put": {
+        "summary": "Update Employee",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Employee Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "employee": {
+                    "type": "object",
+                    "properties": {
+                      "firstname": {
+                        "type": "string"
+                      },
+                      "lastname": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "role": {
+                        "type": "string"
+                      },
+                      "branchID": {
+                        "type": "integer"
+                      },
+                      "jobTitle": {
+                        "type": "string"
+                      },
+                      "hireDate": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "employee": {
+                  "firstname": "",
+                  "lastname": "",
+                  "email": "",
+                  "phone": "",
+                  "role": "",
+                  "branchID": 0,
+                  "jobTitle": "",
+                  "hireDate": "",
+                  "status": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieve Employee",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Employee Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/employees/{EMPLOYEE_ID}/role": {
+      "patch": {
+        "summary": "Update Employee Role",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Employee Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "employee": {
+                    "type": "object",
+                    "properties": {
+                      "role": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "employee": {
+                  "role": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "EMPLOYEE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{EMPLOYEE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/employees/roles": {
+      "get": {
+        "summary": "Retrieve All Employees Roles",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Employee Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/employees/{EMPLOYEE_ID}/status": {
+      "patch": {
+        "summary": "Active / Disactive Employee",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Employee Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "employee": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "employee": {
+                  "status": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "EMPLOYEE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{EMPLOYEE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/employees": {
+      "get": {
+        "summary": "Retrieve All Employees",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Employee Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/employees/": {
+      "post": {
+        "summary": "Add Employee",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Employee Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "employee": {
+                    "type": "object",
+                    "properties": {
+                      "firstname": {
+                        "type": "string"
+                      },
+                      "lastname": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "role": {
+                        "type": "string"
+                      },
+                      "branchID": {
+                        "type": "integer"
+                      },
+                      "jobTitle": {
+                        "type": "string"
+                      },
+                      "hireDate": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "employee": {
+                  "firstname": "",
+                  "lastname": "",
+                  "email": "",
+                  "phone": "",
+                  "role": "",
+                  "branchID": 0,
+                  "jobTitle": "",
+                  "hireDate": "",
+                  "status": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/reports/summary": {
+      "get": {
+        "summary": "Generate Summary",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "groupby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Reporting Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reports/branches": {
+      "get": {
+        "summary": "Generate Branches Report",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "groupby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Reporting Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reports/customers": {
+      "get": {
+        "summary": "Generate Customers Report",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "groupby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Reporting Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reports/vehicles": {
+      "get": {
+        "summary": "Generate Vehicles Report",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "groupby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Reporting Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reports/fleet": {
+      "get": {
+        "summary": "Generate Fleet Report",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "groupby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Reporting Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reports/reservations": {
+      "get": {
+        "summary": "Generate Reservations Report",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "groupby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Reporting Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reports/revenue": {
+      "get": {
+        "summary": "Generate Revenue Report",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "groupby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Reporting Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reports/dashboard": {
+      "get": {
+        "summary": "Retrieve Dashboard",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "groupby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Reporting Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reports/export": {
+      "post": {
+        "summary": "Export Report",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Reporting Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "report": {
+                    "type": "object",
+                    "properties": {
+                      "reportType": {
+                        "type": "string"
+                      },
+                      "format": {
+                        "type": "string"
+                      },
+                      "parameters": {
+                        "type": "object",
+                        "properties": {
+                          "startDate": {
+                            "type": "string"
+                          },
+                          "endDate": {
+                            "type": "string"
+                          },
+                          "branch": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "fileName": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "report": {
+                  "reportType": "",
+                  "format": "",
+                  "parameters": {
+                    "startDate": "",
+                    "endDate": "",
+                    "branch": ""
+                  },
+                  "fileName": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fleet/vehicles": {
+      "get": {
+        "summary": "Retrieve Fleet Vehicles",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "createdAt",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ]
+      },
+      "post": {
+        "summary": "Add Fleet Vehicle",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "vehicle": {
+                    "type": "object",
+                    "properties": {
+                      "make": {
+                        "type": "string"
+                      },
+                      "model": {
+                        "type": "string"
+                      },
+                      "category": {
+                        "type": "string"
+                      },
+                      "transmission": {
+                        "type": "string"
+                      },
+                      "fuelType": {
+                        "type": "string"
+                      },
+                      "seats": {
+                        "type": "string"
+                      },
+                      "color": {
+                        "type": "string"
+                      },
+                      "year": {
+                        "type": "string"
+                      },
+                      "licencePlate": {
+                        "type": "string"
+                      },
+                      "dailyPrice": {
+                        "type": "string"
+                      },
+                      "weeklyPrice": {
+                        "type": "string"
+                      },
+                      "monthlyPrice": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "features": {
+                        "type": "string"
+                      },
+                      "images": {
+                        "type": "array",
+                        "items": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "vehicle": {
+                  "make": "",
+                  "model": "",
+                  "category": "",
+                  "transmission": "",
+                  "fuelType": "",
+                  "seats": "",
+                  "color": "",
+                  "year": "",
+                  "licencePlate": "",
+                  "dailyPrice": "",
+                  "weeklyPrice": "",
+                  "monthlyPrice": "",
+                  "description": "",
+                  "status": "",
+                  "features": "",
+                  "images": []
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fleet/vehicles/{VEHICLE_ID}": {
+      "get": {
+        "summary": "Retrieve Fleet Vehicle",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "VEHICLE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VEHICLE_ID}}"
+        }
+      ],
+      "put": {
+        "summary": "Update Fleet Vehicle",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "vehicle": {
+                    "type": "object",
+                    "properties": {
+                      "make": {
+                        "type": "string"
+                      },
+                      "model": {
+                        "type": "string"
+                      },
+                      "category": {
+                        "type": "string"
+                      },
+                      "transmission": {
+                        "type": "string"
+                      },
+                      "fuelType": {
+                        "type": "string"
+                      },
+                      "seats": {
+                        "type": "string"
+                      },
+                      "color": {
+                        "type": "string"
+                      },
+                      "year": {
+                        "type": "string"
+                      },
+                      "licencePlate": {
+                        "type": "string"
+                      },
+                      "dailyPrice": {
+                        "type": "string"
+                      },
+                      "weeklyPrice": {
+                        "type": "string"
+                      },
+                      "monthlyPrice": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "features": {
+                        "type": "string"
+                      },
+                      "images": {
+                        "type": "array",
+                        "items": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "vehicle": {
+                  "make": "",
+                  "model": "",
+                  "category": "",
+                  "transmission": "",
+                  "fuelType": "",
+                  "seats": "",
+                  "color": "",
+                  "year": "",
+                  "licencePlate": "",
+                  "dailyPrice": "",
+                  "weeklyPrice": "",
+                  "monthlyPrice": "",
+                  "description": "",
+                  "status": "",
+                  "features": "",
+                  "images": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove Fleet Vehicle",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/fleet/vehicles/{VEHICLE_ID}/availability": {
+      "patch": {
+        "summary": "Update Fleet Vehicle Availability",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "vehicle": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "vehicle": {
+                  "status": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "VEHICLE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VEHICLE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/fleet/vehicles/{VEHICLE_ID}/price": {
+      "patch": {
+        "summary": "Update Fleet Vehicle Price",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "vehicle": {
+                    "type": "object",
+                    "properties": {
+                      "dailyPrice": {
+                        "type": "string"
+                      },
+                      "weeklyPrice": {
+                        "type": "string"
+                      },
+                      "monthlyPrice": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "vehicle": {
+                  "dailyPrice": "",
+                  "weeklyPrice": "",
+                  "monthlyPrice": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "VEHICLE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VEHICLE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/fleet/vehicles/{VEHICLE_ID}/images": {
+      "post": {
+        "summary": "Upload Fleet Vehicle Images",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "VEHICLE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VEHICLE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/fleet/vehicles/{VEHICLE_ID}/images/{IMAGE_ID}": {
+      "delete": {
+        "summary": "Delete Fleet Vehicle Image",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "VEHICLE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VEHICLE_ID}}"
+        },
+        {
+          "name": "IMAGE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{IMAGE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/fleet/statistics": {
+      "get": {
+        "summary": "Retrieve Fleet Statistics",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Fleet Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/branches/": {
+      "post": {
+        "summary": "Create Branch",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Branch Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "address": {
+                        "type": "object",
+                        "properties": {
+                          "country": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "postalCode": {
+                            "type": "string"
+                          },
+                          "street": {
+                            "type": "string"
+                          },
+                          "latitude": {
+                            "type": "integer"
+                          },
+                          "longitude": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "operatingHours": {
+                        "type": "object",
+                        "properties": {
+                          "sunday": {
+                            "type": "object",
+                            "properties": {
+                              "open": {
+                                "type": "string"
+                              },
+                              "close": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "branch": {
+                  "name": "",
+                  "code": "",
+                  "phone": "",
+                  "email": "",
+                  "address": {
+                    "country": "",
+                    "state": "",
+                    "city": "",
+                    "postalCode": "",
+                    "street": "",
+                    "latitude": 0,
+                    "longitude": 0
+                  },
+                  "operatingHours": {
+                    "sunday": {
+                      "open": "",
+                      "close": ""
+                    }
+                  },
+                  "status": "",
+                  "description": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/branches": {
+      "get": {
+        "summary": "Retrieve All Branches",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Branch Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/branches/{BRANCH_ID}/status": {
+      "patch": {
+        "summary": "Active / Disactive Branch",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Branch Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "branch": {
+                  "status": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "BRANCH_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{BRANCH_ID}}"
+        }
+      ]
+    },
+    "/api/v1/branches/{BRANCH_ID}/employees": {
+      "get": {
+        "summary": "Retrieve Branch Employees",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Branch Management Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "BRANCH_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{BRANCH_ID}}"
+        }
+      ]
+    },
+    "/api/v1/branches/{BRANCH_ID}/operating-hours": {
+      "patch": {
+        "summary": "Update Branch Operating Hours",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Branch Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "object",
+                    "properties": {
+                      "operatingHours": {
+                        "type": "object",
+                        "properties": {
+                          "sunday": {
+                            "type": "object",
+                            "properties": {
+                              "open": {
+                                "type": "string"
+                              },
+                              "close": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "branch": {
+                  "operatingHours": {
+                    "sunday": {
+                      "open": "",
+                      "close": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "BRANCH_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{BRANCH_ID}}"
+        }
+      ]
+    },
+    "/api/v1/branches/{BRANCH_ID}/vehicles": {
+      "get": {
+        "summary": "Retrieve Branch Vehicles",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Branch Management Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "BRANCH_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{BRANCH_ID}}"
+        }
+      ]
+    },
+    "/api/v1/branches/{BRANCH_ID}": {
+      "put": {
+        "summary": "Update Branch",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Branch Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "address": {
+                        "type": "object",
+                        "properties": {
+                          "country": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "postalCode": {
+                            "type": "string"
+                          },
+                          "street": {
+                            "type": "string"
+                          },
+                          "latitude": {
+                            "type": "integer"
+                          },
+                          "longitude": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "operatingHours": {
+                        "type": "object",
+                        "properties": {
+                          "sunday": {
+                            "type": "object",
+                            "properties": {
+                              "open": {
+                                "type": "string"
+                              },
+                              "close": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "branch": {
+                  "name": "",
+                  "code": "",
+                  "phone": "",
+                  "email": "",
+                  "address": {
+                    "country": "",
+                    "state": "",
+                    "city": "",
+                    "postalCode": "",
+                    "street": "",
+                    "latitude": 0,
+                    "longitude": 0
+                  },
+                  "operatingHours": {
+                    "sunday": {
+                      "open": "",
+                      "close": ""
+                    }
+                  },
+                  "status": "",
+                  "description": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "BRANCH_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{BRANCH_ID}}"
+        }
+      ],
+      "delete": {
+        "summary": "Remove Branch",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Branch Management Endpoints"
+        ]
+      },
+      "get": {
+        "summary": "Retrieve Branch",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Agency Management API",
+          "Branch Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/users/{USER_ID}/role": {
+      "patch": {
+        "summary": "Update User Role",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "User Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "role": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "user": {
+                  "role": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "USER_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{USER_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/users/search": {
+      "get": {
+        "summary": "Search User",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "User Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/users/statistics": {
+      "get": {
+        "summary": "Retrieve Users Statistics",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "User Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/users/{USER_ID}/reset-password": {
+      "post": {
+        "summary": "Reset User Password",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "User Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "password": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "user": {
+                  "password": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "USER_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{USER_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/users/{USER_ID}/status": {
+      "patch": {
+        "summary": "Activate / Disactivate User",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "User Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "user": {
+                  "status": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "USER_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{USER_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/users/{USER_ID}": {
+      "delete": {
+        "summary": "Remove User",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "User Management Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "USER_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{USER_ID}}"
+        }
+      ],
+      "put": {
+        "summary": "Update User",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "User Management Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "firstname": {
+                        "type": "string"
+                      },
+                      "lastname": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "address": {
+                        "type": "object",
+                        "properties": {
+                          "country": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "street": {
+                            "type": "string"
+                          },
+                          "postalCode": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "role": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "user": {
+                  "firstname": "",
+                  "lastname": "",
+                  "phone": "",
+                  "email": "",
+                  "address": {
+                    "country": "",
+                    "state": "",
+                    "city": "",
+                    "street": "",
+                    "postalCode": ""
+                  },
+                  "role": "",
+                  "status": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieve User",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "User Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/users": {
+      "get": {
+        "summary": "Retrieve All Users",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "User Management Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/disputs": {
+      "get": {
+        "summary": "Retrieve All Disputes",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "priority",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Dispute Management API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/disputs/{DISPUTE_ID}": {
+      "get": {
+        "summary": "Retrieve Dispute",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Dispute Management API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "DISPUTE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{DISPUTE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/disputs/{DISPUTE_ID}/assign": {
+      "patch": {
+        "summary": "Assign Dispute",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Dispute Management API Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dispute": {
+                    "type": "object",
+                    "properties": {
+                      "assignedTo": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "dispute": {
+                  "assignedTo": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "DISPUTE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{DISPUTE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/disputs/{DISPUTE_ID}/resolve": {
+      "patch": {
+        "summary": "Resolve Dispute",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Dispute Management API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "DISPUTE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{DISPUTE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/disputs/{DISPUTE_ID}/close": {
+      "patch": {
+        "summary": "Close Dispute",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Dispute Management API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "DISPUTE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{DISPUTE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/disputs/{DISPUTE_ID}/comment": {
+      "post": {
+        "summary": "Add Dispute Comment",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Dispute Management API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "DISPUTE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{DISPUTE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/disputes/statistics": {
+      "get": {
+        "summary": "Retrieve Disputes Statistics",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Dispute Management API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/disputes/history": {
+      "get": {
+        "summary": "Retrieve Disputes History",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Dispute Management API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/moderation/reports/{REPORT_ID}/reject": {
+      "patch": {
+        "summary": "Reject Reported Content",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Moderation API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "REPORT_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{REPORT_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/moderation/reports/{REPORT_ID}/approve": {
+      "patch": {
+        "summary": "Approve Reported Content",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Moderation API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "REPORT_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{REPORT_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/moderation/reports/{REPORT_ID}": {
+      "get": {
+        "summary": "Retrieve Report",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Moderation API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "REPORT_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{REPORT_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/moderation/reports": {
+      "get": {
+        "summary": "Retrieve Reported Content",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "contentType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Moderation API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/moderation/reviews": {
+      "get": {
+        "summary": "Retrieve Customers Reviews",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Moderation API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/moderation/reviews/{REVIEW_ID}": {
+      "delete": {
+        "summary": "Remove Review",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Moderation API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "REVIEW_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{REVIEW_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/moderation/users/{USER_ID}/suspend": {
+      "patch": {
+        "summary": "Suspend User",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Moderation API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "USER_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{USER_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/moderation/statistics": {
+      "get": {
+        "summary": "Retrieve Moderation Statistics",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Moderation API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/moderation/users/{USER_ID}/warnings": {
+      "post": {
+        "summary": "Issue User Warning",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Moderation API Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "warning": {
+                    "type": "object",
+                    "properties": {
+                      "userId": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "content": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "warning": {
+                  "userId": "",
+                  "type": "",
+                  "content": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "USER_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{USER_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/verifications/statistics": {
+      "get": {
+        "summary": "Retrieve Verifications Statistics",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Verification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/verifications/history": {
+      "get": {
+        "summary": "Retrieve Verifications History",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Verification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/verifications/pending": {
+      "get": {
+        "summary": "Retrieve Pending Verifications",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Verification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/admin/verifications/{VERIFICATION_ID}/request-info": {
+      "get": {
+        "summary": "Request Verification Infos",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Verification API Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "request": {
+                    "type": "object",
+                    "properties": {
+                      "docType": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "request": {
+                  "docType": "",
+                  "description": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "VERIFICATION_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VERIFICATION_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/verifications/{VERIFICATION_ID}/reject": {
+      "patch": {
+        "summary": "Reject Verification Request",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Verification API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "VERIFICATION_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VERIFICATION_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/verifications/{VERIFICATION_ID}/approve": {
+      "patch": {
+        "summary": "Approve Verification Request",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Verification API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "VERIFICATION_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VERIFICATION_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/verifications/{VERIFICATION_ID}": {
+      "get": {
+        "summary": "Retrieve Verification Request",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Verification API Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "VERIFICATION_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VERIFICATION_ID}}"
+        }
+      ]
+    },
+    "/api/v1/admin/verifications": {
+      "get": {
+        "summary": "Retrieve All Verification Requests",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Administration API",
+          "Verification API Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reservations/": {
+      "post": {
+        "summary": "Create Reservation",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Reservation Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reservation": {
+                    "type": "object",
+                    "properties": {
+                      "vehicleID": {
+                        "type": "string"
+                      },
+                      "pickupLocation": {
+                        "type": "string"
+                      },
+                      "returnLocation": {
+                        "type": "string"
+                      },
+                      "startDate": {
+                        "type": "string"
+                      },
+                      "endDate": {
+                        "type": "string"
+                      },
+                      "extras": {
+                        "type": "array",
+                        "items": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "reservation": {
+                  "vehicleID": "",
+                  "pickupLocation": "",
+                  "returnLocation": "",
+                  "startDate": "",
+                  "endDate": "",
+                  "extras": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieve Customer Reservations",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Reservation Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reservations/{RESERVATION_ID}": {
+      "get": {
+        "summary": "Retrieve Reservation",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{AGENCY_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Reservation Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "RESERVATION_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{RESERVATION_ID}}"
+        }
+      ],
+      "put": {
+        "summary": "Update Reservation",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Reservation Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reservation": {
+                    "type": "object",
+                    "properties": {
+                      "startDate": {
+                        "type": "string"
+                      },
+                      "endDate": {
+                        "type": "string"
+                      },
+                      "etras": {
+                        "type": "array",
+                        "items": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "reservation": {
+                  "startDate": "",
+                  "endDate": "",
+                  "etras": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cancel Reservation",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Reservation Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reservations/{RESERVATION_ID}/status": {
+      "patch": {
+        "summary": "Update Reservation Status",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{ADMIN_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Reservation Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reservation": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "reservation": {
+                  "status": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "RESERVATION_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{RESERVATION_ID}}"
+        }
+      ]
+    },
+    "/api/v1/reservations/history": {
+      "get": {
+        "summary": "Retrieve Reservations History",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Reservation Endpoints"
+        ]
+      }
+    },
+    "/api/v1/reservations/{RESERVATION_ID}/invoice": {
+      "get": {
+        "summary": "Retrieve Reservation Invoice",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Reservation Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "RESERVATION_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{RESERVATION_ID}}"
+        }
+      ]
+    },
+    "/api/v1/customers/profile": {
+      "get": {
+        "summary": "Retrieve Customer Profile",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Customer Endpoints"
+        ]
+      },
+      "put": {
+        "summary": "Update Customer Profile",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Customer Endpoints"
+        ]
+      }
+    },
+    "/api/v1/customers/avatar": {
+      "post": {
+        "summary": "Upload Customer Avatar",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Customer Endpoints"
+        ]
+      }
+    },
+    "/api/v1/customers/password": {
+      "put": {
+        "summary": "Change Customer Password",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Customer Endpoints"
+        ]
+      }
+    },
+    "/api/v1/customers/preferences": {
+      "put": {
+        "summary": "Update Customer Preferences",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Customer Endpoints"
+        ]
+      },
+      "get": {
+        "summary": "Retrieve Customer Preferences",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Customer Endpoints"
+        ],
+        "description": "Retrieves the preferences for the currently authenticated customer.\n\nUse this endpoint to fetch user-specific settings such as notification preferences, language/locale settings, display options, or any other customizable configuration stored against the customer's account.\n\n**Authentication:** Requires a valid Bearer token in the `Authorization` header.\n\n**Returns:** A JSON object containing the customer's current preference settings."
+      }
+    },
+    "/api/v1/customers/account": {
+      "delete": {
+        "summary": "Deactivate/Delete Customer Account",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{CUSTOMER_TOKEN}}"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Customer Endpoints"
+        ]
+      }
+    },
+    "/api/v1/vehicles": {
+      "get": {
+        "summary": "Retrieve All Available Vehicles",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      }
+    },
+    "/api/v1/vehicles/{VEHICLE_ID}": {
+      "get": {
+        "summary": "Retrieve Specific Vehicle",
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "VEHICLE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VEHICLE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/vehicles/search": {
+      "get": {
+        "summary": "Search Vehicles",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "pickupCity",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      }
+    },
+    "/api/v1/vehicles/filter": {
+      "get": {
+        "summary": "Filter Vehicles",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "minPrice",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "maxPrice",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "transmission",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "fuelType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "seats",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      }
+    },
+    "/api/v1/vehicles/compare": {
+      "get": {
+        "summary": "Compare Vehicles",
+        "parameters": [
+          {
+            "name": "vehicles",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      }
+    },
+    "/api/v1/vehicles/nearby": {
+      "get": {
+        "summary": "Retrieve Nearby Vehicles",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "lng",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      }
+    },
+    "/api/v1/vehicles/categories": {
+      "get": {
+        "summary": "Retrieve Vehicles Categories",
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      }
+    },
+    "/api/v1/vehicles/brands": {
+      "get": {
+        "summary": "Retrieve Vehicles Brands",
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      }
+    },
+    "/api/v1/vehicles/{VEHICLE_ID}/availability": {
+      "get": {
+        "summary": "Check Vehicle Availability",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "VEHICLE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VEHICLE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/vehicles/{VEHICLE_ID}/images": {
+      "get": {
+        "summary": "Retrieve Vehicle Images",
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Vehicle & Search Endpoints"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "VEHICLE_ID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "{{VEHICLE_ID}}"
+        }
+      ]
+    },
+    "/api/v1/auth/register": {
+      "post": {
+        "summary": "Register",
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Authentication Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "summary": "Login",
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Authentication Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "color"
+                  }
+                }
+              },
+              "example": {
+                "email": "oulhadjoday@gmail.com",
+                "password": "123"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "summary": "Refresh",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": ""
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Authentication Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "object",
+                    "properties": {
+                      "refreshToken": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "token": {
+                  "refreshToken": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "summary": "Logout",
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Authentication Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "object",
+                    "properties": {
+                      "refreshToken": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "token": {
+                  "refreshToken": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/forgot-password": {
+      "post": {
+        "summary": "Forgot Password",
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Authentication Endpoints"
+        ]
+      }
+    },
+    "/api/v1/auth/reset-password": {
+      "post": {
+        "summary": "Reset Password",
+        "responses": {},
+        "tags": [
+          "Core API",
+          "Authentication Endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
