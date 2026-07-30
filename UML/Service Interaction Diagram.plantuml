@@ -1,0 +1,70 @@
+@startuml
+title Service Interaction Diagram
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam linetype ortho
+
+actor Customer
+actor "Agency User" as Agency
+actor Administrator
+
+package "Client Applications" {
+    [Web Application]
+    [Mobile Application]
+}
+
+component "API Gateway" as Gateway
+
+package "Core Services" {
+
+component "Authentication\nService" as Auth
+component "Customer\nService" as CustomerService
+component "Vehicle\nService" as VehicleService
+component "Reservation\nService" as ReservationService
+component "Agency Management\nService" as AgencyService
+component "Administration\nService" as AdminService
+component "Integration\nService" as IntegrationService
+}
+
+database "KriGo Database" as DB
+
+cloud "Payment Gateway" as Payment
+cloud "Maps Service" as Maps
+cloud "AI Service" as AI
+cloud "Notification Service" as Notify
+
+Customer --> [Web Application]
+Customer --> [Mobile Application]
+
+Agency --> [Web Application]
+Administrator --> [Web Application]
+
+[Web Application] --> Gateway
+[Mobile Application] --> Gateway
+
+Gateway --> Auth
+Gateway --> CustomerService
+Gateway --> VehicleService
+Gateway --> ReservationService
+Gateway --> AgencyService
+Gateway --> AdminService
+
+CustomerService --> DB
+VehicleService --> DB
+ReservationService --> DB
+AgencyService --> DB
+AdminService --> DB
+Auth --> DB
+
+ReservationService --> IntegrationService
+CustomerService --> IntegrationService
+VehicleService --> IntegrationService
+AgencyService --> IntegrationService
+
+IntegrationService --> Payment
+IntegrationService --> Maps
+IntegrationService --> AI
+IntegrationService --> Notify
+
+@enduml

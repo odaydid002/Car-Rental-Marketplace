@@ -1,0 +1,53 @@
+@startuml
+title API Flow Diagram - Vehicle Reservation
+
+actor Customer
+
+participant "Web/Mobile App" as Client
+participant "API Gateway" as Gateway
+participant "Authentication\nService" as Auth
+participant "Vehicle\nService" as Vehicle
+participant "Reservation\nService" as Reservation
+participant "Payment\nIntegration" as PaymentAPI
+participant "Payment\nGateway" as GatewayPayment
+participant "Notification\nService" as Notification
+
+Customer -> Client : Search Vehicle
+
+Client -> Gateway : GET /vehicles
+
+Gateway -> Auth : Validate JWT
+Auth --> Gateway : Token Valid
+
+Gateway -> Vehicle : Retrieve Available Vehicles
+Vehicle --> Gateway : Vehicle List
+Gateway --> Client : Search Results
+
+Customer -> Client : Reserve Vehicle
+
+Client -> Gateway : POST /reservations
+
+Gateway -> Auth : Validate JWT
+Auth --> Gateway : Authorized
+
+Gateway -> Reservation : Create Reservation
+
+Reservation -> PaymentAPI : Create Payment
+
+PaymentAPI -> GatewayPayment : Process Payment
+
+GatewayPayment --> PaymentAPI : Payment Successful
+
+PaymentAPI --> Reservation : Payment Confirmed
+
+Reservation -> Notification : Send Confirmation
+
+Notification --> Reservation : Notification Delivered
+
+Reservation --> Gateway : Reservation Created
+
+Gateway --> Client : HTTP 201 Created
+
+Client --> Customer : Reservation Confirmation
+
+@enduml
