@@ -1,0 +1,21 @@
+@startwbs
+* Agency Management Information Architecture
+
+** Dashboard
+
+*** Fleet Management
+**** Vehicles
+**** Vehicle Categories
+**** Maintenance
+**** Availability
+
+*** Reservations
+*** Branch Management
+*** Employee Management
+*** Customers
+*** Reports
+*** Notifications
+*** Profile
+*** Settings
+
+@endwbs

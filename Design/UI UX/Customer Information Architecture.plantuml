@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+skinparam linetype ortho
+skinparam packageStyle rectangle
+
+rectangle "Home" as Home
+
+rectangle "Vehicle Search" as VS
+rectangle "Reservations" as RES
+rectangle "Favorites" as FAV
+rectangle "Payments" as PAY
+rectangle "Notifications" as NOTI
+rectangle "Profile" as PRO
+rectangle "Support" as SUP
+
+Home --> VS
+Home --> RES
+Home --> FAV
+Home --> PAY
+Home --> NOTI
+Home --> PRO
+Home --> SUP
+
+VS --> "Search Results"
+VS --> "Vehicle Details"
+VS --> "Vehicle Reviews"
+
+RES --> "Current Reservations"
+RES --> "Reservation Details"
+RES --> "Reservation History"
+
+PRO --> "Personal Information"
+PRO --> "Driver License"
+PRO --> "Saved Payment Methods"
+PRO --> "Security Settings"
+
+SUP --> "Help Center"
+SUP --> "Disputes"
+SUP --> "Contact Support"
+
+@enduml

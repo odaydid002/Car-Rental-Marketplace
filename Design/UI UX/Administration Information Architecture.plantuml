@@ -1,0 +1,16 @@
+@startwbs
+* Administration Information Architecture
+
+** Administrator Dashboard
+*** User Management
+*** Agency Verification
+*** Moderation
+*** Dispute Management
+*** Platform Reports
+*** System Analytics
+*** Notifications
+*** Audit Logs
+*** System Settings
+*** Administrator Profile
+
+@endwbs
